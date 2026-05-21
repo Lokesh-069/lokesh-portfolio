@@ -27,10 +27,32 @@ const projects = [
   },
 ];
 
-const skills = {
-  Technical: ["Python", "C++", "JavaScript", "React", "Machine Learning", "Computer Vision"],
-  Tools: ["OpenCV", "MediaPipe", "Flask", "Twilio", "Cloudinary"],
-  Soft: ["Problem Solving", "Innovation", "Leadership"],
+// logos via simple-icons CDN (svg) — colored brand logos
+const ICON = (slug: string, color?: string) =>
+  `https://cdn.simpleicons.org/${slug}${color ? `/${color}` : ""}`;
+
+type Skill = { name: string; icon?: string; emoji?: string };
+const skills: Record<string, Skill[]> = {
+  Technical: [
+    { name: "Python", icon: ICON("python") },
+    { name: "C++", icon: ICON("cplusplus") },
+    { name: "JavaScript", icon: ICON("javascript") },
+    { name: "React", icon: ICON("react") },
+    { name: "Machine Learning", icon: ICON("tensorflow") },
+    { name: "Computer Vision", icon: ICON("opencv") },
+  ],
+  Tools: [
+    { name: "OpenCV", icon: ICON("opencv") },
+    { name: "MediaPipe", icon: ICON("google", "4285F4") },
+    { name: "Flask", icon: ICON("flask", "ffffff") },
+    { name: "Twilio", icon: ICON("twilio") },
+    { name: "Cloudinary", icon: ICON("cloudinary") },
+  ],
+  Soft: [
+    { name: "Problem Solving", emoji: "🧩" },
+    { name: "Innovation", emoji: "💡" },
+    { name: "Leadership", emoji: "👑" },
+  ],
 };
 
 function Block({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) {
