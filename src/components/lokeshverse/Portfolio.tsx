@@ -224,24 +224,8 @@ export function Portfolio() {
         </div>
       </section>
 
-      {/* ACHIEVEMENTS */}
-      <section id="achievements" className="relative px-4 py-32">
-        <div className="mx-auto max-w-3xl">
-          <SectionHeader tag="LOCATION 03" title="🏆 Hall of Achievements" />
-          <Block>
-            <div className="pixel-border bg-gradient-to-br from-card to-secondary/20 p-8 text-center relative overflow-hidden">
-              <div className="absolute inset-0 bg-portal opacity-10" />
-              <div className="relative">
-                <div className="text-7xl mb-4 animate-float-block">🥇</div>
-                <div className="font-pixel text-[10px] text-accent tracking-widest mb-2">ACHIEVEMENT UNLOCKED</div>
-                <h3 className="font-pixel text-2xl text-shadow-glow mb-2" style={{ color: "var(--gold)" }}>1ST PLACE</h3>
-                <p className="font-display text-xl text-foreground">CodeShield Hackathon</p>
-                <p className="font-display text-base text-muted-foreground">Cyber Odyssey 2026</p>
-              </div>
-            </div>
-          </Block>
-        </div>
-      </section>
+      {/* HALL OF KNOWLEDGE */}
+      <HallOfKnowledge />
 
       {/* SKILLS — Inventory */}
       <section id="skills" className="relative px-4 py-32">
