@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { VoxelWorld } from "./VoxelWorld";
+import { HallOfKnowledge } from "./HallOfKnowledge";
+import { PixelCursor } from "./Cursor";
 
 const projects = [
   {
@@ -64,6 +66,42 @@ export function Portfolio() {
   ]);
   const [input, setInput] = useState("");
 
+  // WASD / arrow scrolling
+  useEffect(() => {
+    let raf = 0;
+    const keys = new Set<string>();
+    const isTyping = (el: EventTarget | null) => {
+      const t = el as HTMLElement | null;
+      return !!t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.isContentEditable);
+    };
+    const down = (e: KeyboardEvent) => {
+      if (isTyping(e.target)) return;
+      const k = e.key.toLowerCase();
+      if (["w", "a", "s", "d", "arrowup", "arrowdown", "arrowleft", "arrowright"].includes(k)) {
+        keys.add(k);
+        e.preventDefault();
+      }
+    };
+    const up = (e: KeyboardEvent) => keys.delete(e.key.toLowerCase());
+    const loop = () => {
+      let dy = 0, dx = 0;
+      if (keys.has("w") || keys.has("arrowup")) dy -= 18;
+      if (keys.has("s") || keys.has("arrowdown")) dy += 18;
+      if (keys.has("a") || keys.has("arrowleft")) dx -= 18;
+      if (keys.has("d") || keys.has("arrowright")) dx += 18;
+      if (dy || dx) window.scrollBy({ top: dy, left: dx, behavior: "auto" });
+      raf = requestAnimationFrame(loop);
+    };
+    window.addEventListener("keydown", down);
+    window.addEventListener("keyup", up);
+    raf = requestAnimationFrame(loop);
+    return () => {
+      window.removeEventListener("keydown", down);
+      window.removeEventListener("keyup", up);
+      cancelAnimationFrame(raf);
+    };
+  }, []);
+
   const ask = (q: string) => {
     setChatLog((l) => [...l, { from: "user", text: q }]);
     const lower = q.toLowerCase();
@@ -78,6 +116,7 @@ export function Portfolio() {
 
   return (
     <div className="relative min-h-screen bg-background">
+      <PixelCursor />
       {/* persistent 3D world background */}
       <div className="fixed inset-0 -z-10 opacity-40">
         <VoxelWorld />
@@ -186,24 +225,8 @@ export function Portfolio() {
         </div>
       </section>
 
-      {/* ACHIEVEMENTS */}
-      <section id="achievements" className="relative px-4 py-32">
-        <div className="mx-auto max-w-3xl">
-          <SectionHeader tag="LOCATION 03" title="🏆 Hall of Achievements" />
-          <Block>
-            <div className="pixel-border bg-gradient-to-br from-card to-secondary/20 p-8 text-center relative overflow-hidden">
-              <div className="absolute inset-0 bg-portal opacity-10" />
-              <div className="relative">
-                <div className="text-7xl mb-4 animate-float-block">🥇</div>
-                <div className="font-pixel text-[10px] text-accent tracking-widest mb-2">ACHIEVEMENT UNLOCKED</div>
-                <h3 className="font-pixel text-2xl text-shadow-glow mb-2" style={{ color: "var(--gold)" }}>1ST PLACE</h3>
-                <p className="font-display text-xl text-foreground">CodeShield Hackathon</p>
-                <p className="font-display text-base text-muted-foreground">Cyber Odyssey 2026</p>
-              </div>
-            </div>
-          </Block>
-        </div>
-      </section>
+      {/* HALL OF KNOWLEDGE */}
+      <HallOfKnowledge />
 
       {/* SKILLS — Inventory */}
       <section id="skills" className="relative px-4 py-32">
