@@ -282,14 +282,32 @@ export function HallOfKnowledge() {
                 <div className="font-pixel text-[9px] text-accent tracking-widest animate-blink">▸ CERTIFICATE UNLOCKED ◂</div>
                 <button onClick={() => setActive(null)} className="font-pixel text-xs text-muted-foreground hover:text-destructive">✕</button>
               </div>
-              <motion.div
-                animate={{ y: [0, -8, 0] }}
-                transition={{ duration: 3, repeat: Infinity }}
-                className="text-6xl text-center mb-4"
-                style={{ filter: `drop-shadow(0 0 20px ${levelColor[active.achievementLevel]})` }}
-              >
-                {active.type === "Winner" ? "🏆" : active.type === "Finalist" ? "🥇" : "📜"}
-              </motion.div>
+              {active.previewImage ? (
+                <motion.div
+                  initial={{ scale: 0.7, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ delay: 0.15, type: "spring", stiffness: 200, damping: 18 }}
+                  className="pixel-border mb-4 overflow-hidden bg-white"
+                  style={{ boxShadow: levelGlow[active.achievementLevel] }}
+                >
+                  <img
+                    src={active.previewImage}
+                    alt={active.title}
+                    loading="lazy"
+                    className="w-full h-auto block"
+                    style={{ imageRendering: "auto" }}
+                  />
+                </motion.div>
+              ) : (
+                <motion.div
+                  animate={{ y: [0, -8, 0] }}
+                  transition={{ duration: 3, repeat: Infinity }}
+                  className="text-6xl text-center mb-4"
+                  style={{ filter: `drop-shadow(0 0 20px ${levelColor[active.achievementLevel]})` }}
+                >
+                  {active.type === "Winner" ? "🏆" : active.type === "Finalist" ? "🥇" : "📜"}
+                </motion.div>
+              )}
               <h3 className="font-pixel text-base text-primary mb-2 text-center">{active.title}</h3>
               <p className="font-display text-lg text-center text-foreground/90">{active.organization}</p>
               {active.date && <p className="font-pixel text-[9px] text-center text-accent mt-2">{active.date}</p>}
