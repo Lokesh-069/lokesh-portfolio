@@ -116,6 +116,7 @@ export function Portfolio() {
 
   return (
     <div className="relative min-h-screen bg-background">
+      <PixelCursor />
       {/* persistent 3D world background */}
       <div className="fixed inset-0 -z-10 opacity-40">
         <VoxelWorld />
