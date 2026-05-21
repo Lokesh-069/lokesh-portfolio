@@ -133,6 +133,7 @@ export function Portfolio() {
             ["projects", "🏗️"],
             ["achievements", "🏆"],
             ["skills", "🎒"],
+            ["resume", "📄"],
           ].map(([id, icon]) => (
             <a
               key={id}
@@ -144,6 +145,7 @@ export function Portfolio() {
               <span className="hidden md:inline">{icon} {id}</span>
             </a>
           ))}
+
         </div>
       </nav>
 
@@ -260,7 +262,62 @@ export function Portfolio() {
         </div>
       </section>
 
+      {/* RESUME — Enchanted Scroll */}
+      <section id="resume" className="relative px-4 py-32">
+        <div className="mx-auto max-w-3xl">
+          <SectionHeader tag="LOCATION 05" title="📄 Enchanted Scroll" />
+          <Block>
+            <div
+              className="pixel-border bg-card p-8 text-center relative overflow-hidden"
+              style={{ boxShadow: "0 0 40px var(--gold, #c9a84c)55, inset 0 0 30px var(--gold, #c9a84c)22" }}
+            >
+              {/* sparkles */}
+              {[...Array(8)].map((_, i) => (
+                <motion.div
+                  key={i}
+                  className="absolute w-1 h-1 bg-white"
+                  style={{ left: `${10 + i * 11}%`, top: "10%", boxShadow: "0 0 8px var(--gold, #c9a84c)" }}
+                  animate={{ y: [0, 220, 0], opacity: [0, 1, 0] }}
+                  transition={{ duration: 3 + (i % 3), repeat: Infinity, delay: i * 0.3 }}
+                />
+              ))}
+              <motion.div
+                animate={{ y: [0, -8, 0], rotate: [-2, 2, -2] }}
+                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                className="text-6xl mb-4 inline-block"
+                style={{ filter: "drop-shadow(0 0 16px #c9a84c)" }}
+              >
+                📜
+              </motion.div>
+              <div className="font-pixel text-[10px] text-accent tracking-widest mb-2 animate-blink">▸ LEGENDARY ITEM ◂</div>
+              <h3 className="font-pixel text-xl md:text-2xl text-primary mb-3">Lokesh's Resume</h3>
+              <p className="font-display text-lg text-foreground/90 mb-6">
+                A scroll of accomplishments, skills, and quests undertaken. Open to read or claim a copy for your own inventory.
+              </p>
+              <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                <a
+                  href="/Lokesh_Hazra_Resume.pdf"
+                  target="_blank"
+                  rel="noreferrer"
+                  className="pixel-btn text-center"
+                >
+                  📖 VIEW SCROLL ↗
+                </a>
+                <a
+                  href="/Lokesh_Hazra_Resume.pdf"
+                  download="Lokesh_Hazra_Resume.pdf"
+                  className="pixel-btn pixel-btn-purple text-center"
+                >
+                  ⬇ DOWNLOAD .PDF
+                </a>
+              </div>
+            </div>
+          </Block>
+        </div>
+      </section>
+
       {/* FOOTER */}
+
       <footer className="relative px-4 py-16 text-center">
         <Block>
           <div className="pixel-border inline-block bg-card px-6 py-4">

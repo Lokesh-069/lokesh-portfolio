@@ -90,11 +90,25 @@ function CertificateCard({ cert, onClick, index }: { cert: Certificate; onClick:
           </motion.div>
           <span className="font-pixel text-[8px] px-2 py-1 pixel-border bg-muted uppercase">{cert.category}</span>
         </div>
+        {cert.previewImage && (
+          <div
+            className="pixel-border mb-3 overflow-hidden bg-white aspect-[4/3]"
+            style={{ boxShadow: `inset 0 0 12px ${levelColor[cert.achievementLevel]}44` }}
+          >
+            <img
+              src={cert.previewImage}
+              alt={cert.title}
+              loading="lazy"
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+            />
+          </div>
+        )}
         <h4 className="font-pixel text-[11px] leading-snug text-foreground mb-2 line-clamp-2">{cert.title}</h4>
         <p className="font-display text-sm text-muted-foreground line-clamp-1">{cert.organization}</p>
         {cert.date && <p className="font-pixel text-[8px] text-accent mt-2">{cert.date}</p>}
-        <div className="mt-3 font-pixel text-[8px] text-primary opacity-0 group-hover:opacity-100 transition-opacity">▸ INSPECT ITEM</div>
+        <div className="mt-3 font-pixel text-[9px] text-primary">▸ TAP TO INSPECT</div>
       </div>
+
     </motion.button>
   );
 }
