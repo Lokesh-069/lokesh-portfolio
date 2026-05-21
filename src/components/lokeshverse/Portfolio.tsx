@@ -66,6 +66,42 @@ export function Portfolio() {
   ]);
   const [input, setInput] = useState("");
 
+  // WASD / arrow scrolling
+  useEffect(() => {
+    let raf = 0;
+    const keys = new Set<string>();
+    const isTyping = (el: EventTarget | null) => {
+      const t = el as HTMLElement | null;
+      return !!t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.isContentEditable);
+    };
+    const down = (e: KeyboardEvent) => {
+      if (isTyping(e.target)) return;
+      const k = e.key.toLowerCase();
+      if (["w", "a", "s", "d", "arrowup", "arrowdown", "arrowleft", "arrowright"].includes(k)) {
+        keys.add(k);
+        e.preventDefault();
+      }
+    };
+    const up = (e: KeyboardEvent) => keys.delete(e.key.toLowerCase());
+    const loop = () => {
+      let dy = 0, dx = 0;
+      if (keys.has("w") || keys.has("arrowup")) dy -= 18;
+      if (keys.has("s") || keys.has("arrowdown")) dy += 18;
+      if (keys.has("a") || keys.has("arrowleft")) dx -= 18;
+      if (keys.has("d") || keys.has("arrowright")) dx += 18;
+      if (dy || dx) window.scrollBy({ top: dy, left: dx, behavior: "auto" });
+      raf = requestAnimationFrame(loop);
+    };
+    window.addEventListener("keydown", down);
+    window.addEventListener("keyup", up);
+    raf = requestAnimationFrame(loop);
+    return () => {
+      window.removeEventListener("keydown", down);
+      window.removeEventListener("keyup", up);
+      cancelAnimationFrame(raf);
+    };
+  }, []);
+
   const ask = (q: string) => {
     setChatLog((l) => [...l, { from: "user", text: q }]);
     const lower = q.toLowerCase();
