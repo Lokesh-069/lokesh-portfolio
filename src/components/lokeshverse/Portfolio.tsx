@@ -263,7 +263,7 @@ export function Portfolio() {
                 <div className="grid grid-cols-3 md:grid-cols-6 gap-3">
                   {items.map((s, i) => (
                     <motion.div
-                      key={s}
+                      key={s.name}
                       initial={{ opacity: 0, scale: 0.5 }}
                       whileInView={{ opacity: 1, scale: 1 }}
                       viewport={{ once: true }}
@@ -271,10 +271,20 @@ export function Portfolio() {
                       whileHover={{ y: -4, rotate: -2 }}
                       className="pixel-border bg-card aspect-square flex flex-col items-center justify-center text-center p-2 hover:shadow-glow transition-shadow cursor-pointer"
                     >
-                      <div className="text-2xl mb-1">
-                        {cat === "Technical" ? "💻" : cat === "Tools" ? "🛠️" : "⭐"}
+                      <div className="h-8 w-8 mb-1 flex items-center justify-center">
+                        {s.icon ? (
+                          <img
+                            src={s.icon}
+                            alt={s.name}
+                            loading="lazy"
+                            className="h-8 w-8 object-contain"
+                            style={{ imageRendering: "pixelated" }}
+                          />
+                        ) : (
+                          <span className="text-2xl">{s.emoji}</span>
+                        )}
                       </div>
-                      <div className="font-pixel text-[9px] text-foreground/90 leading-tight">{s}</div>
+                      <div className="font-pixel text-[9px] text-foreground/90 leading-tight">{s.name}</div>
                     </motion.div>
                   ))}
                 </div>
