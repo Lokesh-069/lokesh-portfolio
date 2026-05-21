@@ -170,7 +170,7 @@ export function Portfolio() {
             <div className="text-3xl animate-float-block">🧙</div>
             <div className="text-left">
               <div className="font-pixel text-[10px] text-accent mb-1">VILLAGER</div>
-              <p className="font-display text-base">Welcome! Press <kbd className="bg-muted px-2 py-0.5 text-xs pixel-border">W</kbd> or scroll to explore the LokeshVerse →</p>
+              <p className="font-display text-base">Welcome! Press <kbd className="bg-muted px-2 py-0.5 text-xs pixel-border">S</kbd> or scroll to explore the LokeshVerse →</p>
             </div>
           </div>
         </Block>
