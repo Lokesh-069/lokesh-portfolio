@@ -14,19 +14,21 @@ export type Certificate = {
 };
 
 const CERTIFICATES: Certificate[] = [
-  { id: "c1", title: "Poster Presentation — AI in Healthcare Robotics", category: "AI / ML", date: "Feb 2026", organization: "Dept. of Robotics & AI, IEM Newtown", type: "Participation", achievementLevel: "silver" },
-  { id: "c2", title: "SnowStorm Hackathon", category: "Hackathon", organization: "Tech4Hack", type: "Participation", achievementLevel: "bronze" },
-  { id: "c3", title: "Quiz Competition", category: "Competition", organization: "UEM Kolkata", type: "Participation", achievementLevel: "bronze" },
-  { id: "c4", title: "ML Canvas 4.0", category: "AI / ML", organization: "ML Canvas", type: "Participation", achievementLevel: "silver" },
-  { id: "c5", title: "IgniteX 2.0", category: "Events", organization: "IMI Kolkata", type: "Participation", achievementLevel: "bronze" },
-  { id: "c6", title: "Hack2Hire — AI-Powered Interview Hackathon", category: "Hackathon", organization: "Hack2Hire", type: "Participation", achievementLevel: "silver" },
-  { id: "c7", title: "TechSprint 2026 — Top 10 Finalist", category: "Hackathon", organization: "GDG On Campus × Hack2Skill", type: "Finalist", achievementLevel: "gold" },
-  { id: "c8", title: "DoubleSlash 4.0", category: "Hackathon", organization: "DoubleSlash", type: "Participation", achievementLevel: "bronze" },
-  { id: "c9", title: "Brain-o-vate Project Competition", category: "Competition", organization: "Brain-o-vate", type: "Participation", achievementLevel: "silver" },
-  { id: "c10", title: "CodeShield Cyber Hackathon", category: "Hackathon", organization: "Cyber Odyssey 2026", type: "Winner", achievementLevel: "diamond" },
-  { id: "c11", title: "APPFORGE — SRJAN 2K26", category: "Events", organization: "SRJAN 2K26", type: "Participation", achievementLevel: "bronze" },
-  { id: "c12", title: "TechSprint Hackathon 2025–26", category: "Hackathon", organization: "TechSprint", type: "Participation", achievementLevel: "silver" },
-  { id: "c13", title: "Kharagpur Data Science Hackathon", category: "AI / ML", organization: "IIT Kharagpur", type: "Participation", achievementLevel: "silver" },
+  { id: "c1", title: "Poster Presentation — AI in Healthcare Robotics", category: "AI / ML", date: "Feb 2026", organization: "Dept. of Robotics & AI, IEM Newtown", type: "Participation", achievementLevel: "silver", previewImage: "/certificates/cert-01.jpg" },
+  { id: "c2", title: "SnowStorm Hackathon", category: "Hackathon", organization: "Tech4Hack", type: "Participation", achievementLevel: "bronze", previewImage: "/certificates/cert-02.jpg" },
+  { id: "c3", title: "Quiz Competition", category: "Competition", date: "Feb 2026", organization: "UEM Kolkata", type: "Participation", achievementLevel: "bronze", previewImage: "/certificates/cert-03.jpg" },
+  { id: "c4", title: "ML Canvas 4.0", category: "AI / ML", date: "Jan 2026", organization: "Dept. of CSE (AI & ML), UEM Kolkata", type: "Participation", achievementLevel: "silver", previewImage: "/certificates/cert-04.jpg" },
+  { id: "c5", title: "IgniteX 2.0", category: "Events", date: "Jan 2026", organization: "IMI Kolkata — Flagship Tech-Fest", type: "Participation", achievementLevel: "bronze", previewImage: "/certificates/cert-05.jpg" },
+  { id: "c6", title: "Hack2Hire — AI-Powered Interview Hackathon", category: "Hackathon", date: "Feb 2026", organization: "UnsaidTalks Education", type: "Participation", achievementLevel: "silver", previewImage: "/certificates/cert-06.jpg" },
+  { id: "c14", title: "TechSprint 2026 — Participation", category: "Hackathon", organization: "GDG On Campus UEM Kolkata × Hack2skill", type: "Participation", achievementLevel: "silver", previewImage: "/certificates/cert-07.jpg" },
+  { id: "c7", title: "TechSprint 2026 — Top 10 Finalist", category: "Achievement", organization: "GDG On Campus UEM Kolkata × Hack2skill", type: "Finalist", achievementLevel: "gold", previewImage: "/certificates/cert-08.jpg" },
+  { id: "c8", title: "DoubleSlash 4.0", category: "Hackathon", organization: "IEEE Jadavpur University Student Branch", type: "Participation", achievementLevel: "bronze", previewImage: "/certificates/cert-09.jpg" },
+  { id: "c15", title: "CodeShield — 1st Position", category: "Achievement", date: "Mar 2026", organization: "Cyber Odyssey 2.0, UEM Kolkata", type: "Winner", achievementLevel: "diamond", previewImage: "/certificates/cert-10.jpg" },
+  { id: "c9", title: "Brain-o-vate Project Competition", category: "Competition", date: "Mar 2026", organization: "IEEE CS SBC, UEM Kolkata", type: "Participation", achievementLevel: "silver", previewImage: "/certificates/cert-11.jpg" },
+  { id: "c10", title: "CodeShield Cyber Hackathon — Participation", category: "Hackathon", date: "Mar 2026", organization: "Cyber Odyssey 2.0, UEM Kolkata", type: "Participation", achievementLevel: "silver", previewImage: "/certificates/cert-12.jpg" },
+  { id: "c11", title: "APPFORGE — SRJAN 2K26", category: "Events", date: "Feb–Mar 2026", organization: "IEM Management House", type: "Participation", achievementLevel: "bronze", previewImage: "/certificates/cert-13.jpg" },
+  { id: "c12", title: "TechSprint Hackathon 2025–26", category: "Hackathon", organization: "GDG on Campus VVIET Mysuru × Hack2Skill", type: "Participation", achievementLevel: "silver", previewImage: "/certificates/cert-14.jpg" },
+  { id: "c13", title: "Kharagpur Data Science Hackathon", category: "AI / ML", organization: "Kharagpur Data Analytics Group, IIT Kharagpur", type: "Participation", achievementLevel: "silver", previewImage: "/certificates/cert-15.jpg" },
 ];
 
 const FILTERS = ["All", "Hackathon", "Participation", "Achievement", "Competition", "AI / ML", "Events"] as const;
