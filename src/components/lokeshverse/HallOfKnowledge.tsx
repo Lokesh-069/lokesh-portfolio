@@ -260,7 +260,7 @@ export function HallOfKnowledge() {
               exit={{ scale: 0.5, opacity: 0, rotateX: 30 }}
               transition={{ type: "spring", stiffness: 260, damping: 22 }}
               onClick={(e) => e.stopPropagation()}
-              className="pixel-border bg-card max-w-lg w-full p-6 relative overflow-hidden"
+              className="pixel-border bg-card max-w-2xl w-full p-6 relative overflow-hidden max-h-[90vh] overflow-y-auto"
               style={{ boxShadow: levelGlow[active.achievementLevel] }}
             >
               {/* unlock burst */}
