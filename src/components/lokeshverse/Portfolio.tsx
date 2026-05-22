@@ -4,6 +4,16 @@ import { VoxelWorld } from "./VoxelWorld";
 import { HallOfKnowledge } from "./HallOfKnowledge";
 import { PixelCursor } from "./Cursor";
 import { ScrollCreeper } from "./ScrollCreeper";
+import {
+  Torch,
+  AmbientParticles,
+  XPOrbs,
+  RedstoneDust,
+  EnchantGlyphs,
+  BedrockStrip,
+  FloatingCubes,
+  HeartBar,
+} from "./MinecraftFX";
 
 const projects = [
   {
@@ -190,7 +200,12 @@ export function Portfolio() {
       </nav>
 
       {/* HERO */}
-      <section id="home" className="relative flex min-h-screen flex-col items-center justify-center px-4 text-center">
+      <section id="home" className="relative flex min-h-screen flex-col items-center justify-center px-4 text-center overflow-hidden">
+        <FloatingCubes count={12} />
+        <AmbientParticles count={22} color="#a78bfa" />
+        {/* corner torches */}
+        <div className="absolute left-6 top-24"><Torch /></div>
+        <div className="absolute right-6 top-24"><Torch /></div>
         <Block>
           <div className="font-pixel text-[10px] text-accent tracking-widest mb-4 animate-blink">▸ PLAYER SPAWNED ◂</div>
         </Block>
@@ -204,6 +219,12 @@ export function Portfolio() {
             AI & Robotics Enthusiast<br/>
             <span className="text-primary">Developer</span> · <span className="text-secondary">Problem Solver</span>
           </p>
+        </Block>
+        <Block delay={0.55}>
+          <div className="mt-6 flex flex-col items-center gap-2">
+            <div className="font-pixel text-[9px] text-muted-foreground">HEALTH</div>
+            <HeartBar count={10} filled={10} />
+          </div>
         </Block>
         <Block delay={0.7}>
           <div className="mt-12 pixel-border bg-card/90 backdrop-blur px-6 py-4 max-w-md mx-auto flex items-start gap-3">
