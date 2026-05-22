@@ -4,6 +4,16 @@ import { VoxelWorld } from "./VoxelWorld";
 import { HallOfKnowledge } from "./HallOfKnowledge";
 import { PixelCursor } from "./Cursor";
 import { ScrollCreeper } from "./ScrollCreeper";
+import {
+  Torch,
+  AmbientParticles,
+  XPOrbs,
+  RedstoneDust,
+  EnchantGlyphs,
+  BedrockStrip,
+  FloatingCubes,
+  HeartBar,
+} from "./MinecraftFX";
 
 const projects = [
   {
@@ -190,7 +200,12 @@ export function Portfolio() {
       </nav>
 
       {/* HERO */}
-      <section id="home" className="relative flex min-h-screen flex-col items-center justify-center px-4 text-center">
+      <section id="home" className="relative flex min-h-screen flex-col items-center justify-center px-4 text-center overflow-hidden">
+        <FloatingCubes count={12} />
+        <AmbientParticles count={22} color="#a78bfa" />
+        {/* corner torches */}
+        <div className="absolute left-6 top-24"><Torch /></div>
+        <div className="absolute right-6 top-24"><Torch /></div>
         <Block>
           <div className="font-pixel text-[10px] text-accent tracking-widest mb-4 animate-blink">▸ PLAYER SPAWNED ◂</div>
         </Block>
@@ -204,6 +219,12 @@ export function Portfolio() {
             AI & Robotics Enthusiast<br/>
             <span className="text-primary">Developer</span> · <span className="text-secondary">Problem Solver</span>
           </p>
+        </Block>
+        <Block delay={0.55}>
+          <div className="mt-6 flex flex-col items-center gap-2">
+            <div className="font-pixel text-[9px] text-muted-foreground">HEALTH</div>
+            <HeartBar count={10} filled={10} />
+          </div>
         </Block>
         <Block delay={0.7}>
           <div className="mt-12 pixel-border bg-card/90 backdrop-blur px-6 py-4 max-w-md mx-auto flex items-start gap-3">
@@ -220,7 +241,8 @@ export function Portfolio() {
       </section>
 
       {/* ABOUT — Village Library */}
-      <section id="about" className="relative px-4 py-32">
+      <section id="about" className="relative px-4 py-32 overflow-hidden">
+        <AmbientParticles count={14} color="#22d3ee" size={2} />
         <div className="mx-auto max-w-5xl">
           <SectionHeader tag="LOCATION 01" title="📚 Village Library" />
           <div className="grid gap-6 md:grid-cols-3">
@@ -242,7 +264,8 @@ export function Portfolio() {
       </section>
 
       {/* PROJECTS — Structures */}
-      <section id="projects" className="relative px-4 py-32">
+      <section id="projects" className="relative px-4 py-32 overflow-hidden">
+        <RedstoneDust count={26} />
         <div className="mx-auto max-w-5xl">
           <SectionHeader tag="LOCATION 02" title="🏗️ Structures" />
           <div className="grid gap-6 md:grid-cols-2">
@@ -271,7 +294,8 @@ export function Portfolio() {
       <HallOfKnowledge />
 
       {/* SKILLS — Inventory */}
-      <section id="skills" className="relative px-4 py-32">
+      <section id="skills" className="relative px-4 py-32 overflow-hidden">
+        <XPOrbs count={18} />
         <div className="mx-auto max-w-5xl">
           <SectionHeader tag="LOCATION 04" title="🎒 Inventory" />
           <div className="space-y-8">
@@ -313,7 +337,8 @@ export function Portfolio() {
       </section>
 
       {/* RESUME — Enchanted Scroll */}
-      <section id="resume" className="relative px-4 py-32">
+      <section id="resume" className="relative px-4 py-32 overflow-hidden">
+        <EnchantGlyphs count={16} />
         <div className="mx-auto max-w-3xl">
           <SectionHeader tag="LOCATION 05" title="📄 Enchanted Scroll" />
           <Block>
@@ -368,6 +393,7 @@ export function Portfolio() {
 
       {/* FOOTER */}
 
+      <BedrockStrip />
       <footer className="relative px-4 py-16 text-center">
         <Block>
           <div className="pixel-border inline-block bg-card px-6 py-4">
