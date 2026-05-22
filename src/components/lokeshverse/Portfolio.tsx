@@ -241,7 +241,8 @@ export function Portfolio() {
       </section>
 
       {/* ABOUT — Village Library */}
-      <section id="about" className="relative px-4 py-32">
+      <section id="about" className="relative px-4 py-32 overflow-hidden">
+        <AmbientParticles count={14} color="#22d3ee" size={2} />
         <div className="mx-auto max-w-5xl">
           <SectionHeader tag="LOCATION 01" title="📚 Village Library" />
           <div className="grid gap-6 md:grid-cols-3">
@@ -263,7 +264,8 @@ export function Portfolio() {
       </section>
 
       {/* PROJECTS — Structures */}
-      <section id="projects" className="relative px-4 py-32">
+      <section id="projects" className="relative px-4 py-32 overflow-hidden">
+        <RedstoneDust count={26} />
         <div className="mx-auto max-w-5xl">
           <SectionHeader tag="LOCATION 02" title="🏗️ Structures" />
           <div className="grid gap-6 md:grid-cols-2">
@@ -292,7 +294,8 @@ export function Portfolio() {
       <HallOfKnowledge />
 
       {/* SKILLS — Inventory */}
-      <section id="skills" className="relative px-4 py-32">
+      <section id="skills" className="relative px-4 py-32 overflow-hidden">
+        <XPOrbs count={18} />
         <div className="mx-auto max-w-5xl">
           <SectionHeader tag="LOCATION 04" title="🎒 Inventory" />
           <div className="space-y-8">
@@ -334,7 +337,8 @@ export function Portfolio() {
       </section>
 
       {/* RESUME — Enchanted Scroll */}
-      <section id="resume" className="relative px-4 py-32">
+      <section id="resume" className="relative px-4 py-32 overflow-hidden">
+        <EnchantGlyphs count={16} />
         <div className="mx-auto max-w-3xl">
           <SectionHeader tag="LOCATION 05" title="📄 Enchanted Scroll" />
           <Block>
@@ -389,6 +393,7 @@ export function Portfolio() {
 
       {/* FOOTER */}
 
+      <BedrockStrip />
       <footer className="relative px-4 py-16 text-center">
         <Block>
           <div className="pixel-border inline-block bg-card px-6 py-4">
