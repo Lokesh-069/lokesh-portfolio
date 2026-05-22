@@ -51,7 +51,7 @@ const skills: Record<string, Skill[]> = {
     { name: "MediaPipe", icon: ICON("mediapipe") },
     { name: "Flask", icon: ICON("flask", "ffffff") },
     { name: "Node.js", icon: ICON("nodedotjs") },
-    { name: "Twilio", icon: ICON("twilio", "F22F46") },
+    { name: "Twilio", icon: "https://www.vectorlogo.zone/logos/twilio/twilio-icon.svg" },
     { name: "Cloudinary", icon: ICON("cloudinary") },
     { name: "Git", icon: ICON("git") },
     { name: "GitHub", icon: ICON("github", "ffffff") },
