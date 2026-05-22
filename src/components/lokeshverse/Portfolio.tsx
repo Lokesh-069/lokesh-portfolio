@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { VoxelWorld } from "./VoxelWorld";
 import { HallOfKnowledge } from "./HallOfKnowledge";
 import { PixelCursor } from "./Cursor";
+import { ScrollCreeper } from "./ScrollCreeper";
 
 const projects = [
   {
@@ -155,6 +156,7 @@ export function Portfolio() {
   return (
     <div className="relative min-h-screen bg-background">
       <PixelCursor />
+      <ScrollCreeper />
       {/* persistent 3D world background */}
       <div className="fixed inset-0 -z-10 opacity-40">
         <VoxelWorld />
