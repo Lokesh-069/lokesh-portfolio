@@ -229,11 +229,11 @@ export function Portfolio() {
           </div>
         </Block>
         <Block delay={0.7}>
-          <div className="mt-12 pixel-border bg-card/90 backdrop-blur px-6 py-4 max-w-md mx-auto flex items-start gap-3">
+          <div className="mt-12 bg-card/70 backdrop-blur rounded-2xl px-6 py-4 max-w-md mx-auto flex items-start gap-3 border border-primary/20 shadow-glow">
             <div className="text-3xl animate-float-block">🧙</div>
             <div className="text-left">
               <div className="font-pixel text-[10px] text-accent mb-1">VILLAGER</div>
-              <p className="font-display text-base">Welcome! Press <kbd className="bg-muted px-2 py-0.5 text-xs pixel-border">S</kbd> or scroll to explore the LokeshVerse →</p>
+              <p className="font-display text-base">Welcome! Press <kbd className="bg-muted px-2 py-0.5 text-xs rounded-md border border-muted-foreground/20">S</kbd> or scroll to explore the LokeshVerse →</p>
             </div>
           </div>
         </Block>
