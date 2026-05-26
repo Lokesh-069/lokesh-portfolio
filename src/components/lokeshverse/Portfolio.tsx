@@ -4,6 +4,7 @@ import { VoxelWorld } from "./VoxelWorld";
 import { HallOfKnowledge } from "./HallOfKnowledge";
 import { PixelCursor } from "./Cursor";
 import { ScrollCreeper } from "./ScrollCreeper";
+import { ContactSection } from "./ContactSection";
 import {
   Torch,
   AmbientParticles,
