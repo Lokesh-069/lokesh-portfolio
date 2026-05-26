@@ -6,8 +6,6 @@ export default defineConfig({
   },
 
   tanstackStart: {
-    server: {
-      entry: "server",
-    },
+    server: false,
   },
 });
