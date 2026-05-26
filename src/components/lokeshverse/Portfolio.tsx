@@ -306,27 +306,39 @@ export function Portfolio() {
                   {items.map((s, i) => (
                     <motion.div
                       key={s.name}
-                      initial={{ opacity: 0, scale: 0.5 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
+                      initial={{ opacity: 0, scale: 0.5, y: 10 }}
+                      whileInView={{ opacity: 1, scale: 1, y: 0 }}
                       viewport={{ once: true }}
-                      transition={{ delay: i * 0.05 }}
-                      whileHover={{ y: -4, rotate: -2 }}
-                      className="pixel-border bg-card aspect-square flex flex-col items-center justify-center text-center p-2 hover:shadow-glow transition-shadow cursor-pointer"
+                      transition={{ delay: i * 0.05, type: "spring", stiffness: 200 }}
+                      whileHover={{ y: -6, scale: 1.15, rotate: [-3, 3, -2, 0] }}
+                      className="group relative flex flex-col items-center justify-center text-center p-2 cursor-pointer"
                     >
-                      <div className="h-8 w-8 mb-1 flex items-center justify-center">
+                      {/* glow aura */}
+                      <div
+                        className="pointer-events-none absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"
+                        style={{ background: "radial-gradient(circle, hsl(var(--primary)/0.55), transparent 65%)" }}
+                      />
+                      {/* sparkle particles on hover */}
+                      <span className="pointer-events-none absolute -top-1 -left-1 h-1.5 w-1.5 bg-accent opacity-0 group-hover:opacity-100 group-hover:animate-ping" />
+                      <span className="pointer-events-none absolute -top-2 right-0 h-1 w-1 bg-secondary opacity-0 group-hover:opacity-100 group-hover:animate-ping [animation-delay:120ms]" />
+                      <span className="pointer-events-none absolute bottom-0 -right-1 h-1.5 w-1.5 bg-primary opacity-0 group-hover:opacity-100 group-hover:animate-ping [animation-delay:240ms]" />
+
+                      <div className="relative h-10 w-10 mb-1 flex items-center justify-center animate-float-block" style={{ animationDelay: `${i * 0.12}s` }}>
                         {s.icon ? (
                           <img
                             src={s.icon}
                             alt={s.name}
                             loading="lazy"
-                            className="h-8 w-8 object-contain"
+                            className="h-10 w-10 object-contain drop-shadow-[0_0_8px_hsl(var(--primary)/0.6)] group-hover:drop-shadow-[0_0_14px_hsl(var(--accent)/0.9)] transition-all"
                             style={{ imageRendering: "pixelated" }}
                           />
                         ) : (
-                          <span className="text-2xl">{s.emoji}</span>
+                          <span className="text-3xl">{s.emoji}</span>
                         )}
                       </div>
-                      <div className="font-pixel text-[9px] text-foreground/90 leading-tight">{s.name}</div>
+                      <div className="relative font-pixel text-[9px] text-foreground/90 leading-tight group-hover:text-primary transition-colors">
+                        {s.name}
+                      </div>
                     </motion.div>
                   ))}
                 </div>
