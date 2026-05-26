@@ -185,6 +185,7 @@ export function Portfolio() {
             ["achievements", "🏆"],
             ["skills", "🎒"],
             ["resume", "📄"],
+            ["contact", "✉️"],
           ].map(([id, icon]) => (
             <a
               key={id}
