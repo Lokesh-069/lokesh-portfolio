@@ -405,6 +405,9 @@ export function Portfolio() {
         </div>
       </section>
 
+      {/* CONTACT — Sender Chest */}
+      <ContactSection />
+
       {/* FOOTER */}
 
       <BedrockStrip />
