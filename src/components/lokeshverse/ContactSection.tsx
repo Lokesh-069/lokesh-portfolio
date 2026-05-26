@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { z } from "zod";
-import { supabase } from "@/integrations/supabase/client";
 import { AmbientParticles } from "./MinecraftFX";
 
 const schema = z.object({
@@ -24,6 +23,7 @@ export function ContactSection() {
       return;
     }
     setStatus("sending");
+    const { supabase } = await import("@/integrations/supabase/client");
     const { error: dbError } = await supabase.from("contact_messages").insert(parsed.data);
     if (dbError) {
       setStatus("error");
