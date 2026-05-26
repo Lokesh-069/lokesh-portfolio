@@ -427,4 +427,3 @@ function CreeperSVG({ flashIntensity }: { flashIntensity: number }) {
     </svg>
   );
 }
-}
