@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { z } from "zod";
-import { supabase } from "@/integrations/supabase/client";
 import { AmbientParticles } from "./MinecraftFX";
 
 const schema = z.object({
