@@ -4,6 +4,7 @@ import { VoxelWorld } from "./VoxelWorld";
 import { HallOfKnowledge } from "./HallOfKnowledge";
 import { PixelCursor } from "./Cursor";
 import { ScrollCreeper } from "./ScrollCreeper";
+import { ContactSection } from "./ContactSection";
 import {
   Torch,
   AmbientParticles,
@@ -184,6 +185,7 @@ export function Portfolio() {
             ["achievements", "🏆"],
             ["skills", "🎒"],
             ["resume", "📄"],
+            ["contact", "✉️"],
           ].map(([id, icon]) => (
             <a
               key={id}
@@ -402,6 +404,9 @@ export function Portfolio() {
           </Block>
         </div>
       </section>
+
+      {/* CONTACT — Sender Chest */}
+      <ContactSection />
 
       {/* FOOTER */}
 
