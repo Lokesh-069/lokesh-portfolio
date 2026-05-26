@@ -23,6 +23,7 @@ export function ContactSection() {
       return;
     }
     setStatus("sending");
+    const { supabase } = await import("@/integrations/supabase/client");
     const { error: dbError } = await supabase.from("contact_messages").insert(parsed.data);
     if (dbError) {
       setStatus("error");
