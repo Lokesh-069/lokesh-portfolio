@@ -26,13 +26,15 @@ jobs:
           node-version: 20
 
       - run: npm install
-      - run: 
-       npm run build
-       cp -r dist/client/* ./public-build
+
+      - run: |
+          npm run build
+          mkdir -p public-build
+          cp -r dist/client/* public-build/
 
       - uses: actions/upload-pages-artifact@v3
         with:
-            path: ./public-build
+          path: ./public-build
 
   deploy:
     environment:
