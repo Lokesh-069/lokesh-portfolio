@@ -312,7 +312,7 @@ export function Portfolio() {
                       whileInView={{ opacity: 1, scale: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: i * 0.05, type: "spring", stiffness: 200 }}
-                      whileHover={{ y: -6, scale: 1.15, rotate: [-3, 3, -2, 0] }}
+                      whileHover={{ y: -6, scale: 1.15, rotate: [-3, 3, -2, 0], transition: { rotate: { duration: 0.5, ease: "easeInOut" } } }}
                       className="group relative flex flex-col items-center justify-center text-center p-2 cursor-pointer"
                     >
                       {/* glow aura */}
