@@ -6,12 +6,8 @@ export function Intro({ onStart, onSkipGame }: { onStart: () => void; onSkipGame
   const [phase, setPhase] = useState<"loading" | "reveal" | "ready">("loading");
 
   useEffect(() => {
-    const t1 = setTimeout(() => setPhase("reveal"), 1200);
-    const t2 = setTimeout(() => setPhase("ready"), 4200);
-    return () => {
-      clearTimeout(t1);
-      clearTimeout(t2);
-    };
+    const t = setTimeout(() => setPhase("ready"), 1400);
+    return () => clearTimeout(t);
   }, []);
 
   return (
