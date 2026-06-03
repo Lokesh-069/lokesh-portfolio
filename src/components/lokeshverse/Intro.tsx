@@ -6,12 +6,8 @@ export function Intro({ onStart, onSkipGame }: { onStart: () => void; onSkipGame
   const [phase, setPhase] = useState<"loading" | "reveal" | "ready">("loading");
 
   useEffect(() => {
-    const t1 = setTimeout(() => setPhase("reveal"), 1200);
-    const t2 = setTimeout(() => setPhase("ready"), 4200);
-    return () => {
-      clearTimeout(t1);
-      clearTimeout(t2);
-    };
+    const t = setTimeout(() => setPhase("ready"), 1400);
+    return () => clearTimeout(t);
   }, []);
 
   return (
@@ -43,27 +39,8 @@ export function Intro({ onStart, onSkipGame }: { onStart: () => void; onSkipGame
           </motion.div>
         )}
 
-        {phase === "reveal" && (
-          <motion.div
-            key="reveal"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1 }}
-            className="pointer-events-none absolute inset-x-0 bottom-32 flex justify-center"
-          >
-            <div className="text-center">
-              <motion.h2
-                initial={{ y: 30, opacity: 0 }}
-                animate={{ y: 0, opacity: 1 }}
-                transition={{ delay: 0.6, duration: 0.8 }}
-                className="font-pixel text-sm text-primary text-shadow-glow"
-              >
-                A LOKESHVERSE EXPERIENCE
-              </motion.h2>
-            </div>
-          </motion.div>
-        )}
+
+
 
         {phase === "ready" && (
           <motion.div
