@@ -1,0 +1,153 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --font-pixel: "Press Start 2P", monospace;
+  --font-display: "VT323", monospace;
+}
+
+:root {
+  --radius: 0.25rem;
+  /* LokeshVerse - cosmic Minecraft night */
+  --background: oklch(0.13 0.05 270);
+  --foreground: oklch(0.97 0.02 220);
+  --card: oklch(0.18 0.06 270);
+  --card-foreground: oklch(0.97 0.02 220);
+  --popover: oklch(0.18 0.06 270);
+  --popover-foreground: oklch(0.97 0.02 220);
+  --primary: oklch(0.72 0.2 195);          /* cyan */
+  --primary-foreground: oklch(0.12 0.05 270);
+  --secondary: oklch(0.55 0.22 295);       /* purple */
+  --secondary-foreground: oklch(0.97 0.02 220);
+  --muted: oklch(0.22 0.05 270);
+  --muted-foreground: oklch(0.7 0.04 250);
+  --accent: oklch(0.75 0.18 145);          /* grass green */
+  --accent-foreground: oklch(0.12 0.05 270);
+  --destructive: oklch(0.65 0.25 25);
+  --destructive-foreground: oklch(0.97 0.02 220);
+  --border: oklch(0.3 0.06 270);
+  --input: oklch(0.25 0.06 270);
+  --ring: oklch(0.72 0.2 195);
+
+  --void: oklch(0.08 0.04 270);
+  --night-1: oklch(0.13 0.05 270);
+  --night-2: oklch(0.2 0.08 280);
+  --cyan-glow: oklch(0.75 0.2 195);
+  --purple-glow: oklch(0.6 0.25 295);
+  --gold: oklch(0.85 0.17 90);
+
+  --gradient-sky: linear-gradient(180deg, oklch(0.1 0.05 280) 0%, oklch(0.2 0.1 285) 50%, oklch(0.3 0.15 240) 100%);
+  --gradient-portal: radial-gradient(circle, var(--purple-glow) 0%, var(--cyan-glow) 60%, transparent 100%);
+  --shadow-block: 4px 4px 0 0 oklch(0 0 0 / 0.5);
+  --shadow-glow: 0 0 30px oklch(0.72 0.2 195 / 0.6);
+  --shadow-glow-purple: 0 0 40px oklch(0.6 0.25 295 / 0.7);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+    image-rendering: pixelated;
+  }
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-display), monospace;
+    overflow-x: hidden;
+    cursor: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'><rect x='9' y='2' width='2' height='6' fill='white' stroke='black'/><rect x='9' y='12' width='2' height='6' fill='white' stroke='black'/><rect x='2' y='9' width='6' height='2' fill='white' stroke='black'/><rect x='12' y='9' width='6' height='2' fill='white' stroke='black'/></svg>") 10 10, crosshair;
+  }
+  h1, h2, h3, h4 { font-family: var(--font-pixel), monospace; letter-spacing: 0.02em; }
+}
+
+@layer utilities {
+  .font-pixel { font-family: var(--font-pixel), monospace; }
+  .font-display { font-family: var(--font-display), monospace; }
+  .text-shadow-block { text-shadow: 3px 3px 0 oklch(0 0 0 / 0.6); }
+  .text-shadow-glow { text-shadow: 0 0 20px var(--cyan-glow), 0 0 40px var(--purple-glow); }
+  .shadow-block { box-shadow: var(--shadow-block); }
+  .shadow-glow { box-shadow: var(--shadow-glow); }
+  .shadow-glow-purple { box-shadow: var(--shadow-glow-purple); }
+  .bg-sky-gradient { background: var(--gradient-sky); }
+  .bg-portal { background: var(--gradient-portal); }
+  .pixel-border {
+    border: 3px solid oklch(0 0 0 / 0.6);
+    box-shadow:
+      inset -3px -3px 0 0 oklch(0 0 0 / 0.3),
+      inset 3px 3px 0 0 oklch(1 0 0 / 0.15),
+      var(--shadow-block);
+  }
+  .pixel-btn {
+    @apply font-pixel text-xs uppercase tracking-wider px-6 py-4 transition-transform active:translate-y-1;
+    background: var(--cyan-glow);
+    color: oklch(0.12 0.05 270);
+    border: 3px solid oklch(0 0 0 / 0.7);
+    box-shadow:
+      inset -3px -3px 0 0 oklch(0 0 0 / 0.3),
+      inset 3px 3px 0 0 oklch(1 0 0 / 0.3),
+      4px 4px 0 0 oklch(0 0 0 / 0.6);
+  }
+  .pixel-btn:hover { filter: brightness(1.15); }
+  .pixel-btn-purple { background: var(--purple-glow); color: white; }
+}
+
+@keyframes float-block {
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  50% { transform: translateY(-12px) rotate(2deg); }
+}
+@keyframes portal-pulse {
+  0%, 100% { transform: scale(1); filter: hue-rotate(0deg); opacity: 0.9; }
+  50% { transform: scale(1.05); filter: hue-rotate(30deg); opacity: 1; }
+}
+@keyframes blink {
+  0%, 50%, 100% { opacity: 1; }
+  25%, 75% { opacity: 0.3; }
+}
+@keyframes chunk-load {
+  from { transform: translateY(40px) scale(0.8); opacity: 0; }
+  to { transform: translateY(0) scale(1); opacity: 1; }
+}
+@keyframes scroll-stars {
+  from { background-position: 0 0; }
+  to { background-position: 0 -1000px; }
+}
+.animate-float-block { animation: float-block 4s ease-in-out infinite; }
+.animate-portal { animation: portal-pulse 3s ease-in-out infinite; }
+.animate-blink { animation: blink 1.2s steps(2, end) infinite; }
+.animate-chunk { animation: chunk-load 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) both; }
+
+.starfield {
+  background-image:
+    radial-gradient(1px 1px at 20% 30%, white, transparent),
+    radial-gradient(1px 1px at 60% 70%, white, transparent),
+    radial-gradient(2px 2px at 80% 10%, oklch(0.85 0.15 200), transparent),
+    radial-gradient(1px 1px at 33% 80%, white, transparent),
+    radial-gradient(1px 1px at 90% 50%, oklch(0.75 0.2 295), transparent),
+    radial-gradient(2px 2px at 10% 60%, white, transparent);
+  background-size: 600px 600px;
+  animation: scroll-stars 60s linear infinite;
+}
