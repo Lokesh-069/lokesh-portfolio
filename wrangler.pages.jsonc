@@ -1,0 +1,13 @@
+// Cloudflare Pages config for static SPA deployment.
+// Deploy with:
+//   bun run build
+//   npx wrangler pages deploy dist/client --project-name lokesh-portfolio --config wrangler.pages.jsonc
+//
+// Keep the SSR Worker config in wrangler.jsonc untouched — this file is
+// used only when you want to ship the prerendered client bundle to Pages.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "lokesh-portfolio",
+  "compatibility_date": "2025-09-24",
+  "pages_build_output_dir": "dist/client"
+}
