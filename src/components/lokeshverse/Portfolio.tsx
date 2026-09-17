@@ -28,6 +28,46 @@ const projects = [
     live: "https://safe-signal-ai.vercel.app/",
   },
   {
+    name: "SafeSignal V2",
+    structure: "Weapon Watchtower",
+    icon: "🛡️",
+    color: "var(--destructive)",
+    description: "Real-time weapon detection and alerting system built during my internship. Runs YOLO pose + object detection on live video and pushes alerts through a dashboard.",
+    tech: ["YOLOv11", "Python", "OpenCV", "Flask"],
+    github: "https://github.com/Lokesh-069/Safe-SignalV2",
+    live: "",
+  },
+  {
+    name: "PramaanX",
+    structure: "Document Vault",
+    icon: "🪪",
+    color: "var(--primary)",
+    description: "AI-powered document and identity verification platform built with a four-person team. I own the Document AI module: OCR, MRZ parsing, tamper detection, database cross-validation and face matching.",
+    tech: ["Python", "FastAPI", "OpenCV", "PaddleOCR", "PyTorch", "InsightFace"],
+    github: "https://github.com/rkivln/PRAMAANX",
+    live: "",
+  },
+  {
+    name: "QueueLess",
+    structure: "Smart Checkout Stall",
+    icon: "🛒",
+    color: "var(--secondary)",
+    description: "Queue-free smart checkout system with a Node/Express/MongoDB backend and a companion mobile app for scan-and-go retail checkout.",
+    tech: ["Node.js", "Express", "MongoDB", "JWT"],
+    github: "https://github.com/Lokesh-069/QueueLess-SmartCheckout",
+    live: "",
+  },
+  {
+    name: "TypeRocket Kids",
+    structure: "Arcade Corner",
+    icon: "🚀",
+    color: "var(--accent)",
+    description: "A playful browser typing game for kids — race a plane or car across the screen by typing the falling words correctly.",
+    tech: ["JavaScript", "HTML5 Canvas", "CSS"],
+    github: "https://github.com/Lokesh-069/TypeRocket-Kids",
+    live: "",
+  },
+  {
     name: "Coming Soon",
     structure: "Construction Site",
     icon: "🏗️",
@@ -450,7 +490,9 @@ export function Portfolio() {
             {projects[selected].github && (
               <div className="flex gap-3">
                 <a href={projects[selected].github} target="_blank" rel="noreferrer" className="pixel-btn flex-1 text-center">GitHub ↗</a>
-                <a href={projects[selected].live} target="_blank" rel="noreferrer" className="pixel-btn pixel-btn-purple flex-1 text-center">Live ↗</a>
+                {projects[selected].live && (
+                  <a href={projects[selected].live} target="_blank" rel="noreferrer" className="pixel-btn pixel-btn-purple flex-1 text-center">Live ↗</a>
+                )}
               </div>
             )}
           </motion.div>
