@@ -83,7 +83,9 @@ export function ContactSection() {
 
       <div className="relative mx-auto max-w-2xl">
         <div className="mb-10 text-center">
-          <div className="font-pixel text-[10px] text-primary tracking-widest mb-3">▸ LOCATION 06 ◂</div>
+          <div className="font-pixel text-[10px] text-primary tracking-widest mb-3">
+            ▸ LOCATION 06 ◂
+          </div>
           <h2 className="font-pixel text-2xl md:text-4xl text-shadow-block bg-gradient-to-b from-foreground to-primary bg-clip-text text-transparent">
             ✉️ Get In Touch
           </h2>
@@ -116,7 +118,9 @@ export function ContactSection() {
                 disabled={loading}
               />
             </div>
-            {errors.name && <p className="mt-1 text-xs text-destructive font-display">{errors.name}</p>}
+            {errors.name && (
+              <p className="mt-1 text-xs text-destructive font-display">{errors.name}</p>
+            )}
           </div>
 
           {/* Email */}
@@ -134,7 +138,9 @@ export function ContactSection() {
                 disabled={loading}
               />
             </div>
-            {errors.email && <p className="mt-1 text-xs text-destructive font-display">{errors.email}</p>}
+            {errors.email && (
+              <p className="mt-1 text-xs text-destructive font-display">{errors.email}</p>
+            )}
           </div>
 
           {/* Subject */}
@@ -152,7 +158,9 @@ export function ContactSection() {
                 disabled={loading}
               />
             </div>
-            {errors.subject && <p className="mt-1 text-xs text-destructive font-display">{errors.subject}</p>}
+            {errors.subject && (
+              <p className="mt-1 text-xs text-destructive font-display">{errors.subject}</p>
+            )}
           </div>
 
           {/* Message */}
@@ -169,7 +177,9 @@ export function ContactSection() {
                 disabled={loading}
               />
             </div>
-            {errors.message && <p className="mt-1 text-xs text-destructive font-display">{errors.message}</p>}
+            {errors.message && (
+              <p className="mt-1 text-xs text-destructive font-display">{errors.message}</p>
+            )}
           </div>
 
           {/* Submit */}
@@ -196,7 +206,10 @@ export function ContactSection() {
           </motion.button>
 
           <div className="font-pixel text-[9px] text-muted-foreground text-center pt-1">
-            Or email directly: <a href="mailto:lokeshhazraiem28@gmail.com" className="text-primary hover:underline">lokeshhazraiem28@gmail.com</a>
+            Or email directly:{" "}
+            <a href="mailto:lokeshhazraiem28@gmail.com" className="text-primary hover:underline">
+              lokeshhazraiem28@gmail.com
+            </a>
           </div>
         </motion.form>
       </div>

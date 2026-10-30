@@ -9,14 +9,24 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       { title: "LokeshVerse — Lokesh Hazra · AI & Robotics" },
-      { name: "description", content: "A cinematic Minecraft-inspired portfolio for Lokesh Hazra — AI & Robotics student, developer, problem solver." },
+      {
+        name: "description",
+        content:
+          "A cinematic Minecraft-inspired portfolio for Lokesh Hazra — AI & Robotics student, developer, problem solver.",
+      },
       { property: "og:title", content: "LokeshVerse — Lokesh Hazra" },
-      { property: "og:description", content: "Enter LokeshVerse: a playable block-world portfolio." },
+      {
+        property: "og:description",
+        content: "Enter LokeshVerse: a playable block-world portfolio.",
+      },
     ],
     links: [
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
-      { rel: "stylesheet", href: "https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap",
+      },
     ],
   }),
   component: Index,
@@ -36,12 +46,22 @@ function Index() {
           </motion.div>
         )}
         {stage === "game" && (
-          <motion.div key="game" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }}>
+          <motion.div
+            key="game"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
             <MiniGame onComplete={() => setStage("portfolio")} />
           </motion.div>
         )}
         {stage === "portfolio" && (
-          <motion.div key="portfolio" initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
+          <motion.div
+            key="portfolio"
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
             <Portfolio />
           </motion.div>
         )}

@@ -40,9 +40,20 @@ function Tree({ position }: { position: [number, number, number] }) {
       ))}
       {/* leaves cluster */}
       {[
-        [0, 0, 0], [1, 0, 0], [-1, 0, 0], [0, 0, 1], [0, 0, -1],
-        [1, 0, 1], [-1, 0, -1], [1, 0, -1], [-1, 0, 1],
-        [0, 1, 0], [1, 1, 0], [-1, 1, 0], [0, 1, 1], [0, 1, -1],
+        [0, 0, 0],
+        [1, 0, 0],
+        [-1, 0, 0],
+        [0, 0, 1],
+        [0, 0, -1],
+        [1, 0, 1],
+        [-1, 0, -1],
+        [1, 0, -1],
+        [-1, 0, 1],
+        [0, 1, 0],
+        [1, 1, 0],
+        [-1, 1, 0],
+        [0, 1, 1],
+        [0, 1, -1],
         [0, 2, 0],
       ].map(([dx, dy, dz], i) => (
         <Block
@@ -73,30 +84,50 @@ function TorchBlock({ position }: { position: [number, number, number] }) {
         <boxGeometry args={[0.35, 0.25, 0.35]} />
         <meshStandardMaterial color="#ffb84c" emissive="#ff7a18" emissiveIntensity={2.5} />
       </mesh>
-      <pointLight ref={lightRef} position={[0, 0.6, 0]} color="#ffae3c" intensity={2.4} distance={8} decay={2} />
+      <pointLight
+        ref={lightRef}
+        position={[0, 0.6, 0]}
+        color="#ffae3c"
+        intensity={2.4}
+        distance={8}
+        decay={2}
+      />
     </group>
   );
 }
 
 /* ---------- Floating island ---------- */
-function FloatingIsland({ offset = 0, withTrees = true, withTorches = true }: { offset?: number; withTrees?: boolean; withTorches?: boolean }) {
+function FloatingIsland({
+  offset = 0,
+  withTrees = true,
+  withTorches = true,
+}: {
+  offset?: number;
+  withTrees?: boolean;
+  withTorches?: boolean;
+}) {
   const ref = useRef<THREE.Group>(null);
   useFrame((s) => {
     if (ref.current) ref.current.position.y = Math.sin(s.clock.elapsedTime * 0.5 + offset) * 0.3;
   });
   const blocks = useMemo(() => {
-    const arr: { pos: [number, number, number]; color: string; emissive?: string; ei?: number }[] = [];
+    const arr: { pos: [number, number, number]; color: string; emissive?: string; ei?: number }[] =
+      [];
     // organic-ish heightmap
     for (let x = -4; x <= 4; x++)
       for (let z = -4; z <= 4; z++) {
         const d = Math.sqrt(x * x + z * z);
-        const hNoise = Math.round(Math.sin(x * 0.9 + offset) * 0.5 + Math.cos(z * 0.8 - offset) * 0.5);
+        const hNoise = Math.round(
+          Math.sin(x * 0.9 + offset) * 0.5 + Math.cos(z * 0.8 - offset) * 0.5,
+        );
         if (d < 4) {
           // grass top — shade variations
-          const grassShade = (x + z + 100) % 3 === 0 ? "#3fa83a" : (x * z) % 2 === 0 ? "#4ade80" : "#52c45a";
+          const grassShade =
+            (x + z + 100) % 3 === 0 ? "#3fa83a" : (x * z) % 2 === 0 ? "#4ade80" : "#52c45a";
           arr.push({ pos: [x, hNoise, z], color: grassShade });
           // dirt
-          for (let k = 1; k <= 2; k++) arr.push({ pos: [x, hNoise - k, z], color: k === 1 ? "#8b5a2b" : "#6b3f1d" });
+          for (let k = 1; k <= 2; k++)
+            arr.push({ pos: [x, hNoise - k, z], color: k === 1 ? "#8b5a2b" : "#6b3f1d" });
           // stone core
           if (d < 3) arr.push({ pos: [x, hNoise - 3, z], color: "#5a5a5a" });
           if (d < 2) arr.push({ pos: [x, hNoise - 4, z], color: "#3d3d3d" });
@@ -112,7 +143,13 @@ function FloatingIsland({ offset = 0, withTrees = true, withTorches = true }: { 
   return (
     <group ref={ref}>
       {blocks.map((b, i) => (
-        <Block key={i} position={b.pos} color={b.color} emissive={b.emissive ?? "#000"} emissiveIntensity={b.ei ?? 0} />
+        <Block
+          key={i}
+          position={b.pos}
+          color={b.color}
+          emissive={b.emissive ?? "#000"}
+          emissiveIntensity={b.ei ?? 0}
+        />
       ))}
       {withTrees && (
         <>
@@ -138,10 +175,22 @@ function LavaPool({ position }: { position: [number, number, number] }) {
   });
   return (
     <group position={position}>
-      {[[0,0,0],[1,0,0],[0,0,1],[1,0,1],[-1,0,0],[0,0,-1]].map(([x,y,z], i) => (
+      {[
+        [0, 0, 0],
+        [1, 0, 0],
+        [0, 0, 1],
+        [1, 0, 1],
+        [-1, 0, 0],
+        [0, 0, -1],
+      ].map(([x, y, z], i) => (
         <mesh key={i} position={[x, y, z]} castShadow>
           <boxGeometry args={[1, 1, 1]} />
-          <meshStandardMaterial ref={i === 0 ? ref : undefined} color="#ff7a18" emissive="#ff3c00" emissiveIntensity={1.6} />
+          <meshStandardMaterial
+            ref={i === 0 ? ref : undefined}
+            color="#ff7a18"
+            emissive="#ff3c00"
+            emissiveIntensity={1.6}
+          />
         </mesh>
       ))}
       <pointLight color="#ff6a1a" intensity={3} distance={12} position={[0.5, 0.8, 0.5]} />
@@ -150,7 +199,17 @@ function LavaPool({ position }: { position: [number, number, number] }) {
 }
 
 /* ---------- Drifting cloud (voxel) ---------- */
-function Cloud({ y, z, speed = 0.4, offset = 0 }: { y: number; z: number; speed?: number; offset?: number }) {
+function Cloud({
+  y,
+  z,
+  speed = 0.4,
+  offset = 0,
+}: {
+  y: number;
+  z: number;
+  speed?: number;
+  offset?: number;
+}) {
   const ref = useRef<THREE.Group>(null);
   useFrame((s) => {
     if (ref.current) {
@@ -160,8 +219,7 @@ function Cloud({ y, z, speed = 0.4, offset = 0 }: { y: number; z: number; speed?
   const blocks = useMemo(() => {
     const arr: [number, number, number][] = [];
     for (let x = 0; x < 5; x++)
-      for (let z = 0; z < 2; z++)
-        if (Math.random() > 0.25) arr.push([x, 0, z]);
+      for (let z = 0; z < 2; z++) if (Math.random() > 0.25) arr.push([x, 0, z]);
     return arr;
   }, []);
   return (
@@ -273,11 +331,7 @@ function CameraRig({ intro }: { intro: boolean }) {
     const t = state.clock.elapsedTime;
     if (intro) {
       const p = Math.min(t / 4, 1);
-      state.camera.position.set(
-        Math.sin(p * Math.PI) * 9,
-        5 + (1 - p) * 7,
-        14 - p * 5,
-      );
+      state.camera.position.set(Math.sin(p * Math.PI) * 9, 5 + (1 - p) * 7, 14 - p * 5);
       state.camera.lookAt(0, 2, -2);
     } else {
       state.camera.position.x = Math.sin(t * 0.2) * 7;
@@ -292,7 +346,12 @@ function CameraRig({ intro }: { intro: boolean }) {
 /* ---------- Main scene ---------- */
 export function VoxelWorld({ intro = false }: { intro?: boolean }) {
   return (
-    <Canvas shadows camera={{ position: [0, 9, 16], fov: 55 }} dpr={[1, 2]} gl={{ antialias: true }}>
+    <Canvas
+      shadows
+      camera={{ position: [0, 9, 16], fov: 55 }}
+      dpr={[1, 2]}
+      gl={{ antialias: true }}
+    >
       <color attach="background" args={["#0c0a1f"]} />
       <Suspense fallback={null}>
         <fog attach="fog" args={["#1a1033", 14, 48]} />
@@ -315,9 +374,15 @@ export function VoxelWorld({ intro = false }: { intro?: boolean }) {
 
         {/* Islands */}
         <FloatingIsland />
-        <group position={[9, 3, -9]}><FloatingIsland offset={2} withTrees={false} /></group>
-        <group position={[-10, -1, -11]}><FloatingIsland offset={4} withTorches={false} /></group>
-        <group position={[6, -3, 5]} scale={0.7}><FloatingIsland offset={1.5} withTrees={false} withTorches={false} /></group>
+        <group position={[9, 3, -9]}>
+          <FloatingIsland offset={2} withTrees={false} />
+        </group>
+        <group position={[-10, -1, -11]}>
+          <FloatingIsland offset={4} withTorches={false} />
+        </group>
+        <group position={[6, -3, 5]} scale={0.7}>
+          <FloatingIsland offset={1.5} withTrees={false} withTorches={false} />
+        </group>
 
         {/* Lava on far island */}
         <LavaPool position={[-10.5, 1, -11]} />

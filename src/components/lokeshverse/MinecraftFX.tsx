@@ -4,7 +4,10 @@ import { useMemo } from "react";
 /* ===================== TORCH ===================== */
 export function Torch({ className = "", scale = 1 }: { className?: string; scale?: number }) {
   return (
-    <div className={`pointer-events-none select-none ${className}`} style={{ transform: `scale(${scale})` }}>
+    <div
+      className={`pointer-events-none select-none ${className}`}
+      style={{ transform: `scale(${scale})` }}
+    >
       {/* flame */}
       <motion.div
         animate={{ scaleY: [1, 1.15, 0.95, 1.1, 1], scaleX: [1, 0.9, 1.05, 0.95, 1] }}
@@ -13,7 +16,8 @@ export function Torch({ className = "", scale = 1 }: { className?: string; scale
         style={{
           width: 12,
           height: 18,
-          background: "radial-gradient(ellipse at 50% 70%, #fff7a8 0%, #ffd24a 35%, #ff7a18 70%, transparent 100%)",
+          background:
+            "radial-gradient(ellipse at 50% 70%, #fff7a8 0%, #ffd24a 35%, #ff7a18 70%, transparent 100%)",
           filter: "drop-shadow(0 -2px 12px #ff9a3c) drop-shadow(0 0 18px #ffb84c)",
           borderRadius: "50% 50% 40% 40% / 60% 60% 40% 40%",
         }}
@@ -58,7 +62,10 @@ export function AmbientParticles({
     [count, size],
   );
   return (
-    <div className={`pointer-events-none absolute inset-0 overflow-hidden ${className}`} aria-hidden>
+    <div
+      className={`pointer-events-none absolute inset-0 overflow-hidden ${className}`}
+      aria-hidden
+    >
       {items.map((p) => (
         <motion.span
           key={p.key}
@@ -258,7 +265,9 @@ export function HeartBar({ count = 10, filled = 8 }: { count?: number; filled?: 
           animate={i < filled ? { scale: [1, 1.15, 1] } : {}}
           transition={{ duration: 1.2, repeat: Infinity, delay: i * 0.08 }}
           className="text-base"
-          style={{ filter: i < filled ? "drop-shadow(0 0 4px #ff4d6d)" : "grayscale(1) opacity(0.4)" }}
+          style={{
+            filter: i < filled ? "drop-shadow(0 0 4px #ff4d6d)" : "grayscale(1) opacity(0.4)",
+          }}
         >
           ❤
         </motion.span>

@@ -39,9 +39,6 @@ export function Intro({ onStart, onSkipGame }: { onStart: () => void; onSkipGame
           </motion.div>
         )}
 
-
-
-
         {phase === "ready" && (
           <motion.div
             key="ready"
@@ -85,7 +82,10 @@ export function Intro({ onStart, onSkipGame }: { onStart: () => void; onSkipGame
               <button onClick={onStart} className="pixel-btn animate-blink">
                 ▶ PRESS START
               </button>
-              <button onClick={onSkipGame} className="font-pixel text-[10px] text-muted-foreground hover:text-primary transition-colors mt-2 underline-offset-4 hover:underline">
+              <button
+                onClick={onSkipGame}
+                className="font-pixel text-[10px] text-muted-foreground hover:text-primary transition-colors mt-2 underline-offset-4 hover:underline"
+              >
                 skip game →
               </button>
             </motion.div>

@@ -1,7 +1,9 @@
 import { useEffect, useRef, useState } from "react";
 
 type Entity = { x: number; y: number; type: "cube" | "obstacle" };
-const W = 16, H = 10, CELL = 40;
+const W = 16,
+  H = 10,
+  CELL = 40;
 
 export function MiniGame({ onComplete }: { onComplete: () => void }) {
   const [player, setPlayer] = useState({ x: 1, y: 1 });
@@ -15,9 +17,17 @@ export function MiniGame({ onComplete }: { onComplete: () => void }) {
   useEffect(() => {
     const ents: Entity[] = [];
     for (let i = 0; i < 12; i++)
-      ents.push({ x: Math.floor(Math.random() * W), y: Math.floor(Math.random() * H), type: "cube" });
+      ents.push({
+        x: Math.floor(Math.random() * W),
+        y: Math.floor(Math.random() * H),
+        type: "cube",
+      });
     for (let i = 0; i < 6; i++)
-      ents.push({ x: Math.floor(Math.random() * W), y: Math.floor(Math.random() * H), type: "obstacle" });
+      ents.push({
+        x: Math.floor(Math.random() * W),
+        y: Math.floor(Math.random() * H),
+        type: "obstacle",
+      });
     setEntities(ents);
   }, []);
 
@@ -153,7 +163,8 @@ export function MiniGame({ onComplete }: { onComplete: () => void }) {
       </div>
 
       <p className="mt-4 font-display text-lg text-muted-foreground">
-        Use <kbd className="pixel-border bg-muted px-2 py-0.5 text-xs">WASD</kbd> to move. Collect cyan cubes. Avoid red.
+        Use <kbd className="pixel-border bg-muted px-2 py-0.5 text-xs">WASD</kbd> to move. Collect
+        cyan cubes. Avoid red.
       </p>
     </div>
   );

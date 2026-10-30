@@ -136,7 +136,9 @@ export function ScrollCreeper() {
   const scrollProgress = maxScroll > 0 ? scroll / maxScroll : 0;
   const blastThreshold = 0.93;
   const isBlasting = scrollProgress >= blastThreshold;
-  const blastProgress = isBlasting ? Math.min((scrollProgress - blastThreshold) / (1 - blastThreshold), 1) : 0;
+  const blastProgress = isBlasting
+    ? Math.min((scrollProgress - blastThreshold) / (1 - blastThreshold), 1)
+    : 0;
 
   // Pattern: horizontal sine wave across viewport, vertical bob, scroll-driven rotation
   const t = scroll / 220;
@@ -161,10 +163,10 @@ export function ScrollCreeper() {
 
   // Flash effect: rapid white flashing
   const flashIntensity = flashProgress * Math.sin(blastProgress * 50);
-  
+
   // Expansion: slight scale up before explosion
   const expandScale = 1 + expandProgress * 0.3;
-  
+
   // Final explosion: creeper disappears, particles fly
   const creeperOpacity = explodeProgress > 0 ? 1 - explodeProgress : 1;
 
@@ -181,11 +183,9 @@ export function ScrollCreeper() {
       >
         <CreeperSVG flashIntensity={flashIntensity} />
       </div>
-      
+
       {/* Minecraft-style explosion particles */}
-      {explodeProgress > 0 && (
-        <MinecraftExplosion x={x} y={y + hop} progress={explodeProgress} />
-      )}
+      {explodeProgress > 0 && <MinecraftExplosion x={x} y={y + hop} progress={explodeProgress} />}
     </>
   );
 }
@@ -197,32 +197,32 @@ function MinecraftExplosion({ x, y, progress }: { x: number; y: number; progress
     const seed1 = Math.sin(i * 12.9898) * 43758.5453;
     const seed2 = Math.cos(i * 78.233) * 43758.5453;
     const seed3 = Math.sin(i * 45.164) * 43758.5453;
-    
+
     const random1 = seed1 - Math.floor(seed1);
     const random2 = seed2 - Math.floor(seed2);
     const random3 = seed3 - Math.floor(seed3);
-    
+
     // Explosion direction - spherical distribution
     const angle = random1 * Math.PI * 2;
     const elevation = (random2 - 0.5) * Math.PI * 0.6;
-    
+
     // Velocity with variation
     const speed = 80 + random3 * 120;
     const vx = Math.cos(angle) * Math.cos(elevation) * speed;
     const vy = Math.sin(elevation) * speed - 50; // Slight upward bias initially
-    
+
     // Gravity effect
     const gravity = 180;
     const px = vx * progress;
     const py = vy * progress + 0.5 * gravity * progress * progress;
-    
+
     // Particle size variation
     const size = 6 + random1 * 8;
-    
+
     // Fade out
     const fadeStart = 0.6;
-    const opacity = progress < fadeStart ? 1 : 1 - ((progress - fadeStart) / (1 - fadeStart));
-    
+    const opacity = progress < fadeStart ? 1 : 1 - (progress - fadeStart) / (1 - fadeStart);
+
     // Color variations - Minecraft explosion palette
     const colors = [
       "#ff6b00", // Orange
@@ -236,10 +236,10 @@ function MinecraftExplosion({ x, y, progress }: { x: number; y: number; progress
       "#666666", // Dark smoke
     ];
     const color = colors[Math.floor(random2 * colors.length)];
-    
+
     // Rotation for blocky effect
     const rotation = random3 * 360 + progress * (random1 - 0.5) * 720;
-    
+
     return {
       id: i,
       x: px,
@@ -287,7 +287,7 @@ function MinecraftExplosion({ x, y, progress }: { x: number; y: number; progress
           opacity: shockwaveOpacity,
         }}
       />
-      
+
       {/* Central flash */}
       <div
         className="absolute"
@@ -300,7 +300,7 @@ function MinecraftExplosion({ x, y, progress }: { x: number; y: number; progress
           opacity: 1 - progress,
         }}
       />
-      
+
       {/* Blocky particles */}
       {particles.map((p) => (
         <div
@@ -319,7 +319,7 @@ function MinecraftExplosion({ x, y, progress }: { x: number; y: number; progress
           }}
         />
       ))}
-      
+
       {/* Smoke puffs (later stage) */}
       {progress > 0.3 && (
         <>
@@ -328,7 +328,7 @@ function MinecraftExplosion({ x, y, progress }: { x: number; y: number; progress
             const dist = (progress - 0.3) * 150;
             const smokeSize = 30 + (progress - 0.3) * 40;
             const smokeOpacity = Math.max(0, (1 - progress) * 0.4);
-            
+
             return (
               <div
                 key={`smoke-${i}`}
@@ -357,13 +357,17 @@ function CreeperSVG({ flashIntensity }: { flashIntensity: number }) {
   const D = "#3a8f3a"; // darker green
   const L = "#7ad06d"; // light green
   const K = "#0a0a0a"; // black (face + outline)
-  
+
   // Flash to white when about to explode
   const flash = Math.abs(flashIntensity);
-  const flashedG = flash > 0 ? `rgb(${90 + flash * 165}, ${181 + flash * 74}, ${82 + flash * 173})` : G;
-  const flashedD = flash > 0 ? `rgb(${58 + flash * 197}, ${143 + flash * 112}, ${58 + flash * 197})` : D;
-  const flashedL = flash > 0 ? `rgb(${122 + flash * 133}, ${208 + flash * 47}, ${109 + flash * 146})` : L;
-  const flashedK = flash > 0 ? `rgb(${10 + flash * 245}, ${10 + flash * 245}, ${10 + flash * 245})` : K;
+  const flashedG =
+    flash > 0 ? `rgb(${90 + flash * 165}, ${181 + flash * 74}, ${82 + flash * 173})` : G;
+  const flashedD =
+    flash > 0 ? `rgb(${58 + flash * 197}, ${143 + flash * 112}, ${58 + flash * 197})` : D;
+  const flashedL =
+    flash > 0 ? `rgb(${122 + flash * 133}, ${208 + flash * 47}, ${109 + flash * 146})` : L;
+  const flashedK =
+    flash > 0 ? `rgb(${10 + flash * 245}, ${10 + flash * 245}, ${10 + flash * 245})` : K;
 
   // grid: row of 16 chars each — '.' empty, 'g' green, 'd' dark, 'l' light, 'k' black
   const map = [
@@ -384,34 +388,35 @@ function CreeperSVG({ flashIntensity }: { flashIntensity: number }) {
     "gdddggggggggdddd",
     "ggddggggggggdddd",
   ];
-  
-  const colorOf: Record<string, string | null> = { 
-    g: flashedG, 
-    d: flashedD, 
-    l: flashedL, 
-    k: flashedK, 
-    ".": null 
+
+  const colorOf: Record<string, string | null> = {
+    g: flashedG,
+    d: flashedD,
+    l: flashedL,
+    k: flashedK,
+    ".": null,
   };
-  
+
   const size = 4; // px per cell -> 64x64 svg
-  
+
   return (
     <svg
       width={64}
       height={64}
       viewBox="0 0 64 64"
       shapeRendering="crispEdges"
-      style={{ 
-        filter: flash > 0.3 
-          ? `drop-shadow(0 0 ${flash * 15}px rgba(255,255,255,0.9)) brightness(${1 + flash * 1.5})`
-          : "drop-shadow(2px 3px 0 rgba(0,0,0,0.6))" 
+      style={{
+        filter:
+          flash > 0.3
+            ? `drop-shadow(0 0 ${flash * 15}px rgba(255,255,255,0.9)) brightness(${1 + flash * 1.5})`
+            : "drop-shadow(2px 3px 0 rgba(0,0,0,0.6))",
       }}
     >
       {map.flatMap((row, y) =>
         row.split("").map((c, x) => {
           const fill = colorOf[c];
           if (!fill) return null;
-          
+
           return (
             <rect
               key={`${x}-${y}`}
@@ -422,7 +427,7 @@ function CreeperSVG({ flashIntensity }: { flashIntensity: number }) {
               fill={fill}
             />
           );
-        })
+        }),
       )}
     </svg>
   );

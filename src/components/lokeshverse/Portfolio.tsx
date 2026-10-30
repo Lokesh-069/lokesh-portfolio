@@ -22,7 +22,8 @@ const projects = [
     structure: "Emergency Research Lab",
     icon: "🚨",
     color: "var(--destructive)",
-    description: "AI emergency detection system using SOS gesture recognition. Detects distress signals in real time and triggers alerts.",
+    description:
+      "AI emergency detection system using SOS gesture recognition. Detects distress signals in real time and triggers alerts.",
     tech: ["MediaPipe", "OpenCV", "Flask", "React", "Twilio", "Cloudinary"],
     github: "https://github.com/Lokesh-069/SafeSignal-AI",
     live: "https://safe-signal-ai.vercel.app/",
@@ -32,7 +33,8 @@ const projects = [
     structure: "Weapon Watchtower",
     icon: "🛡️",
     color: "var(--destructive)",
-    description: "Real-time weapon detection and alerting system built during my internship. Runs YOLO pose + object detection on live video and pushes alerts through a dashboard.",
+    description:
+      "Real-time weapon detection and alerting system built during my internship. Runs YOLO pose + object detection on live video and pushes alerts through a dashboard.",
     tech: ["YOLOv11", "Python", "OpenCV", "Flask"],
     github: "https://github.com/Lokesh-069/Safe-SignalV2",
     live: "",
@@ -42,7 +44,8 @@ const projects = [
     structure: "Document Vault",
     icon: "🪪",
     color: "var(--primary)",
-    description: "AI-powered document and identity verification platform built with a four-person team. I own the Document AI module: OCR, MRZ parsing, tamper detection, database cross-validation and face matching.",
+    description:
+      "AI-powered document and identity verification platform built with a four-person team. I own the Document AI module: OCR, MRZ parsing, tamper detection, database cross-validation and face matching.",
     tech: ["Python", "FastAPI", "OpenCV", "PaddleOCR", "PyTorch", "InsightFace"],
     github: "https://github.com/rkivln/PRAMAANX",
     live: "",
@@ -52,7 +55,8 @@ const projects = [
     structure: "Smart Checkout Stall",
     icon: "🛒",
     color: "var(--secondary)",
-    description: "Queue-free smart checkout system with a Node/Express/MongoDB backend and a companion mobile app for scan-and-go retail checkout.",
+    description:
+      "Queue-free smart checkout system with a Node/Express/MongoDB backend and a companion mobile app for scan-and-go retail checkout.",
     tech: ["Node.js", "Express", "MongoDB", "JWT"],
     github: "https://github.com/Lokesh-069/QueueLess-SmartCheckout",
     live: "",
@@ -62,7 +66,8 @@ const projects = [
     structure: "Arcade Corner",
     icon: "🚀",
     color: "var(--accent)",
-    description: "A playful browser typing game for kids — race a plane or car across the screen by typing the falling words correctly.",
+    description:
+      "A playful browser typing game for kids — race a plane or car across the screen by typing the falling words correctly.",
     tech: ["JavaScript", "HTML5 Canvas", "CSS"],
     github: "https://github.com/Lokesh-069/TypeRocket-Kids",
     live: "",
@@ -72,7 +77,8 @@ const projects = [
     structure: "Construction Site",
     icon: "🏗️",
     color: "var(--muted-foreground)",
-    description: "New AI experiments in progress. Check back soon for more builds from the LokeshVerse.",
+    description:
+      "New AI experiments in progress. Check back soon for more builds from the LokeshVerse.",
     tech: ["TBA"],
     github: "",
     live: "",
@@ -107,7 +113,10 @@ const skills: Record<string, Skill[]> = {
     { name: "Cloudinary", icon: ICON("cloudinary") },
     { name: "Git", icon: ICON("git") },
     { name: "GitHub", icon: ICON("github", "ffffff") },
-    { name: "VS Code", icon: "https://raw.githubusercontent.com/github/explore/main/topics/visual-studio-code/visual-studio-code.png" },
+    {
+      name: "VS Code",
+      icon: "https://raw.githubusercontent.com/github/explore/main/topics/visual-studio-code/visual-studio-code.png",
+    },
     { name: "Vercel", icon: ICON("vercel", "ffffff") },
     { name: "Postman", icon: ICON("postman") },
     { name: "Figma", icon: ICON("figma") },
@@ -123,7 +132,15 @@ const skills: Record<string, Skill[]> = {
   ],
 };
 
-function Block({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) {
+function Block({
+  children,
+  delay = 0,
+  className = "",
+}: {
+  children: React.ReactNode;
+  delay?: number;
+  className?: string;
+}) {
   return (
     <motion.div
       initial={{ opacity: 0, y: 40, scale: 0.9 }}
@@ -152,7 +169,10 @@ export function Portfolio() {
   const [selected, setSelected] = useState<number | null>(null);
   const [chat, setChat] = useState(false);
   const [chatLog, setChatLog] = useState<{ from: "user" | "npc"; text: string }[]>([
-    { from: "npc", text: "Hello traveler! I'm your guide in the LokeshVerse. Ask me about Lokesh!" },
+    {
+      from: "npc",
+      text: "Hello traveler! I'm your guide in the LokeshVerse. Ask me about Lokesh!",
+    },
   ]);
   const [input, setInput] = useState("");
 
@@ -174,7 +194,8 @@ export function Portfolio() {
     };
     const up = (e: KeyboardEvent) => keys.delete(e.key.toLowerCase());
     const loop = () => {
-      let dy = 0, dx = 0;
+      let dy = 0,
+        dx = 0;
       if (keys.has("w") || keys.has("arrowup")) dy -= 18;
       if (keys.has("s") || keys.has("arrowdown")) dy += 18;
       if (keys.has("a") || keys.has("arrowleft")) dx -= 18;
@@ -195,11 +216,18 @@ export function Portfolio() {
   const ask = (q: string) => {
     setChatLog((l) => [...l, { from: "user", text: q }]);
     const lower = q.toLowerCase();
-    let reply = "Lokesh is a 2nd year B.Tech CSE (AI & Robotics) student at IEM Newtown, passionate about AI, computer vision, and automation.";
-    if (lower.includes("project")) reply = "His featured project is SafeSignal — an AI emergency detection system using gesture recognition. Check the Structures section!";
-    else if (lower.includes("skill")) reply = "Python, C++, JavaScript, React, ML, Computer Vision — plus tools like OpenCV, MediaPipe, Flask, Twilio, Cloudinary.";
-    else if (lower.includes("achieve") || lower.includes("award")) reply = "1st Place at CodeShield Hackathon — Cyber Odyssey 2026!";
-    else if (lower.includes("contact") || lower.includes("github")) reply = "Find him on GitHub: github.com/Lokesh-069";
+    let reply =
+      "Lokesh is a 2nd year B.Tech CSE (AI & Robotics) student at IEM Newtown, passionate about AI, computer vision, and automation.";
+    if (lower.includes("project"))
+      reply =
+        "His featured project is SafeSignal — an AI emergency detection system using gesture recognition. Check the Structures section!";
+    else if (lower.includes("skill"))
+      reply =
+        "Python, C++, JavaScript, React, ML, Computer Vision — plus tools like OpenCV, MediaPipe, Flask, Twilio, Cloudinary.";
+    else if (lower.includes("achieve") || lower.includes("award"))
+      reply = "1st Place at CodeShield Hackathon — Cyber Odyssey 2026!";
+    else if (lower.includes("contact") || lower.includes("github"))
+      reply = "Find him on GitHub: github.com/Lokesh-069";
     setTimeout(() => setChatLog((l) => [...l, { from: "npc", text: reply }]), 600);
     setInput("");
   };
@@ -234,32 +262,47 @@ export function Portfolio() {
               title={id}
             >
               <span className="md:hidden">{icon}</span>
-              <span className="hidden md:inline">{icon} {id}</span>
+              <span className="hidden md:inline">
+                {icon} {id}
+              </span>
             </a>
           ))}
-
         </div>
       </nav>
 
       {/* HERO */}
-      <section id="home" className="relative flex min-h-screen flex-col items-center justify-center px-4 text-center overflow-hidden">
+      <section
+        id="home"
+        className="relative flex min-h-screen flex-col items-center justify-center px-4 text-center overflow-hidden"
+      >
         <FloatingCubes count={12} />
         <AmbientParticles count={22} color="#a78bfa" />
         {/* corner torches */}
-        <div className="absolute left-6 top-24"><Torch /></div>
-        <div className="absolute right-6 top-24"><Torch /></div>
+        <div className="absolute left-6 top-24">
+          <Torch />
+        </div>
+        <div className="absolute right-6 top-24">
+          <Torch />
+        </div>
         <Block>
-          <div className="font-pixel text-[10px] text-accent tracking-widest mb-4 animate-blink">▸ PLAYER SPAWNED ◂</div>
+          <div className="font-pixel text-[10px] text-accent tracking-widest mb-4 animate-blink">
+            ▸ PLAYER SPAWNED ◂
+          </div>
         </Block>
         <Block delay={0.2}>
-          <h1 className="font-pixel text-4xl md:text-7xl text-shadow-glow bg-gradient-to-b from-primary via-secondary to-accent bg-clip-text text-transparent" style={{ WebkitTextStroke: "1px rgba(0,0,0,0.5)" }}>
+          <h1
+            className="font-pixel text-4xl md:text-7xl text-shadow-glow bg-gradient-to-b from-primary via-secondary to-accent bg-clip-text text-transparent"
+            style={{ WebkitTextStroke: "1px rgba(0,0,0,0.5)" }}
+          >
             LOKESH HAZRA
           </h1>
         </Block>
         <Block delay={0.4}>
           <p className="font-display text-xl md:text-2xl text-muted-foreground mt-6 leading-snug">
-            AI & Robotics Enthusiast<br/>
-            <span className="text-primary">Developer</span> · <span className="text-secondary">Problem Solver</span>
+            AI & Robotics Enthusiast
+            <br />
+            <span className="text-primary">Developer</span> ·{" "}
+            <span className="text-secondary">Problem Solver</span>
           </p>
         </Block>
         <Block delay={0.55}>
@@ -273,12 +316,20 @@ export function Portfolio() {
             <div className="text-3xl animate-float-block">🧙</div>
             <div className="text-left">
               <div className="font-pixel text-[10px] text-accent mb-1">VILLAGER</div>
-              <p className="font-display text-base">Welcome! Press <kbd className="bg-muted px-2 py-0.5 text-xs rounded-md border border-muted-foreground/20">S</kbd> or scroll to explore the LokeshVerse →</p>
+              <p className="font-display text-base">
+                Welcome! Press{" "}
+                <kbd className="bg-muted px-2 py-0.5 text-xs rounded-md border border-muted-foreground/20">
+                  S
+                </kbd>{" "}
+                or scroll to explore the LokeshVerse →
+              </p>
             </div>
           </div>
         </Block>
         <Block delay={1}>
-          <div className="mt-16 font-pixel text-[10px] text-muted-foreground animate-blink">▼ SCROLL TO EXPLORE ▼</div>
+          <div className="mt-16 font-pixel text-[10px] text-muted-foreground animate-blink">
+            ▼ SCROLL TO EXPLORE ▼
+          </div>
         </Block>
       </section>
 
@@ -289,9 +340,21 @@ export function Portfolio() {
           <SectionHeader tag="LOCATION 01" title="📚 Village Library" />
           <div className="grid gap-6 md:grid-cols-3">
             {[
-              { title: "Student", body: "B.Tech CSE (AI & Robotics), 2nd Year at IEM Newtown.", icon: "🎓" },
-              { title: "Passion", body: "Building real-world solutions using AI, computer vision, and automation.", icon: "🤖" },
-              { title: "Mission", body: "Becoming an AI/ML engineer who ships products that matter.", icon: "🎯" },
+              {
+                title: "Student",
+                body: "B.Tech CSE (AI & Robotics), 2nd Year at IEM Newtown.",
+                icon: "🎓",
+              },
+              {
+                title: "Passion",
+                body: "Building real-world solutions using AI, computer vision, and automation.",
+                icon: "🤖",
+              },
+              {
+                title: "Mission",
+                body: "Becoming an AI/ML engineer who ships products that matter.",
+                icon: "🎯",
+              },
             ].map((b, i) => (
               <Block key={b.title} delay={i * 0.1}>
                 <div className="pixel-border bg-card p-6 h-full hover:translate-y-[-4px] transition-transform">
@@ -320,10 +383,14 @@ export function Portfolio() {
                 >
                   <div className="flex items-start justify-between mb-3">
                     <div className="text-5xl animate-float-block">{p.icon}</div>
-                    <div className="font-pixel text-[10px] text-muted-foreground">{p.structure}</div>
+                    <div className="font-pixel text-[10px] text-muted-foreground">
+                      {p.structure}
+                    </div>
                   </div>
                   <h3 className="font-pixel text-lg mb-2 text-primary">{p.name}</h3>
-                  <p className="font-display text-base text-foreground/80 line-clamp-2">{p.description}</p>
+                  <p className="font-display text-base text-foreground/80 line-clamp-2">
+                    {p.description}
+                  </p>
                   <div className="mt-4 font-pixel text-[10px] text-accent">▸ CLICK TO INSPECT</div>
                 </button>
               </Block>
@@ -352,20 +419,31 @@ export function Portfolio() {
                       whileInView={{ opacity: 1, scale: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: i * 0.05, type: "spring", stiffness: 200 }}
-                      whileHover={{ y: -6, scale: 1.15, rotate: [-3, 3, -2, 0], transition: { rotate: { duration: 0.5, ease: "easeInOut" } } }}
+                      whileHover={{
+                        y: -6,
+                        scale: 1.15,
+                        rotate: [-3, 3, -2, 0],
+                        transition: { rotate: { duration: 0.5, ease: "easeInOut" } },
+                      }}
                       className="group relative flex flex-col items-center justify-center text-center p-2 cursor-pointer"
                     >
                       {/* glow aura */}
                       <div
                         className="pointer-events-none absolute inset-0 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-300 blur-xl"
-                        style={{ background: "radial-gradient(circle, hsl(var(--primary)/0.55), transparent 65%)" }}
+                        style={{
+                          background:
+                            "radial-gradient(circle, hsl(var(--primary)/0.55), transparent 65%)",
+                        }}
                       />
                       {/* sparkle particles on hover */}
                       <span className="pointer-events-none absolute -top-1 -left-1 h-1.5 w-1.5 bg-accent opacity-0 group-hover:opacity-100 group-hover:animate-ping" />
                       <span className="pointer-events-none absolute -top-2 right-0 h-1 w-1 bg-secondary opacity-0 group-hover:opacity-100 group-hover:animate-ping [animation-delay:120ms]" />
                       <span className="pointer-events-none absolute bottom-0 -right-1 h-1.5 w-1.5 bg-primary opacity-0 group-hover:opacity-100 group-hover:animate-ping [animation-delay:240ms]" />
 
-                      <div className="relative h-10 w-10 mb-1 flex items-center justify-center animate-float-block" style={{ animationDelay: `${i * 0.12}s` }}>
+                      <div
+                        className="relative h-10 w-10 mb-1 flex items-center justify-center animate-float-block"
+                        style={{ animationDelay: `${i * 0.12}s` }}
+                      >
                         {s.icon ? (
                           <img
                             src={s.icon}
@@ -398,14 +476,20 @@ export function Portfolio() {
           <Block>
             <div
               className="pixel-border bg-card p-8 text-center relative overflow-hidden"
-              style={{ boxShadow: "0 0 40px var(--gold, #c9a84c)55, inset 0 0 30px var(--gold, #c9a84c)22" }}
+              style={{
+                boxShadow: "0 0 40px var(--gold, #c9a84c)55, inset 0 0 30px var(--gold, #c9a84c)22",
+              }}
             >
               {/* sparkles */}
               {[...Array(8)].map((_, i) => (
                 <motion.div
                   key={i}
                   className="absolute w-1 h-1 bg-white"
-                  style={{ left: `${10 + i * 11}%`, top: "10%", boxShadow: "0 0 8px var(--gold, #c9a84c)" }}
+                  style={{
+                    left: `${10 + i * 11}%`,
+                    top: "10%",
+                    boxShadow: "0 0 8px var(--gold, #c9a84c)",
+                  }}
                   animate={{ y: [0, 220, 0], opacity: [0, 1, 0] }}
                   transition={{ duration: 3 + (i % 3), repeat: Infinity, delay: i * 0.3 }}
                 />
@@ -418,10 +502,13 @@ export function Portfolio() {
               >
                 📜
               </motion.div>
-              <div className="font-pixel text-[10px] text-accent tracking-widest mb-2 animate-blink">▸ LEGENDARY ITEM ◂</div>
+              <div className="font-pixel text-[10px] text-accent tracking-widest mb-2 animate-blink">
+                ▸ LEGENDARY ITEM ◂
+              </div>
               <h3 className="font-pixel text-xl md:text-2xl text-primary mb-3">Lokesh's Resume</h3>
               <p className="font-display text-lg text-foreground/90 mb-6">
-                A scroll of accomplishments, skills, and quests undertaken. Open to read or claim a copy for your own inventory.
+                A scroll of accomplishments, skills, and quests undertaken. Open to read or claim a
+                copy for your own inventory.
               </p>
               <div className="flex flex-col sm:flex-row gap-3 justify-center">
                 <a
@@ -456,7 +543,12 @@ export function Portfolio() {
           <div className="pixel-border inline-block bg-card px-6 py-4">
             <div className="font-pixel text-[10px] text-muted-foreground mb-2">END OF WORLD</div>
             <p className="font-display text-lg">Thanks for exploring the LokeshVerse.</p>
-            <a href="https://github.com/Lokesh-069" target="_blank" rel="noreferrer" className="font-pixel text-xs text-primary hover:text-secondary mt-2 inline-block">
+            <a
+              href="https://github.com/Lokesh-069"
+              target="_blank"
+              rel="noreferrer"
+              className="font-pixel text-xs text-primary hover:text-secondary mt-2 inline-block"
+            >
               github.com/Lokesh-069 ↗
             </a>
           </div>
@@ -465,7 +557,10 @@ export function Portfolio() {
 
       {/* PROJECT MODAL */}
       {selected !== null && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-background/80 backdrop-blur p-4" onClick={() => setSelected(null)}>
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center bg-background/80 backdrop-blur p-4"
+          onClick={() => setSelected(null)}
+        >
           <motion.div
             initial={{ scale: 0.8, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
@@ -474,24 +569,47 @@ export function Portfolio() {
           >
             <div className="flex items-start justify-between mb-4">
               <div className="text-6xl">{projects[selected].icon}</div>
-              <button onClick={() => setSelected(null)} className="font-pixel text-xs text-muted-foreground hover:text-destructive">✕ CLOSE</button>
+              <button
+                onClick={() => setSelected(null)}
+                className="font-pixel text-xs text-muted-foreground hover:text-destructive"
+              >
+                ✕ CLOSE
+              </button>
             </div>
-            <div className="font-pixel text-[10px] text-accent mb-1">{projects[selected].structure}</div>
+            <div className="font-pixel text-[10px] text-accent mb-1">
+              {projects[selected].structure}
+            </div>
             <h3 className="font-pixel text-xl text-primary mb-3">{projects[selected].name}</h3>
             <p className="font-display text-lg mb-4">{projects[selected].description}</p>
             <div className="mb-4">
               <div className="font-pixel text-[10px] text-secondary mb-2">▸ TECH STACK</div>
               <div className="flex flex-wrap gap-2">
                 {projects[selected].tech.map((t) => (
-                  <span key={t} className="pixel-border bg-muted px-2 py-1 font-pixel text-[9px]">{t}</span>
+                  <span key={t} className="pixel-border bg-muted px-2 py-1 font-pixel text-[9px]">
+                    {t}
+                  </span>
                 ))}
               </div>
             </div>
             {projects[selected].github && (
               <div className="flex gap-3">
-                <a href={projects[selected].github} target="_blank" rel="noreferrer" className="pixel-btn flex-1 text-center">GitHub ↗</a>
+                <a
+                  href={projects[selected].github}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="pixel-btn flex-1 text-center"
+                >
+                  GitHub ↗
+                </a>
                 {projects[selected].live && (
-                  <a href={projects[selected].live} target="_blank" rel="noreferrer" className="pixel-btn pixel-btn-purple flex-1 text-center">Live ↗</a>
+                  <a
+                    href={projects[selected].live}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="pixel-btn pixel-btn-purple flex-1 text-center"
+                  >
+                    Live ↗
+                  </a>
                 )}
               </div>
             )}
@@ -508,15 +626,23 @@ export function Portfolio() {
         <div className="text-3xl">🧙</div>
       </button>
       {chat && (
-        <div className="fixed bottom-24 right-6 z-40 pixel-border bg-card w-80 max-w-[calc(100vw-2rem)] flex flex-col" style={{ height: 420 }}>
+        <div
+          className="fixed bottom-24 right-6 z-40 pixel-border bg-card w-80 max-w-[calc(100vw-2rem)] flex flex-col"
+          style={{ height: 420 }}
+        >
           <div className="font-pixel text-[10px] bg-secondary text-secondary-foreground p-3 flex justify-between">
             <span>▸ VILLAGER GUIDE</span>
             <button onClick={() => setChat(false)}>✕</button>
           </div>
           <div className="flex-1 overflow-y-auto p-3 space-y-2">
             {chatLog.map((m, i) => (
-              <div key={i} className={`font-display text-sm ${m.from === "user" ? "text-right" : ""}`}>
-                <div className={`inline-block px-3 py-2 pixel-border max-w-[85%] ${m.from === "user" ? "bg-primary text-primary-foreground" : "bg-muted"}`}>
+              <div
+                key={i}
+                className={`font-display text-sm ${m.from === "user" ? "text-right" : ""}`}
+              >
+                <div
+                  className={`inline-block px-3 py-2 pixel-border max-w-[85%] ${m.from === "user" ? "bg-primary text-primary-foreground" : "bg-muted"}`}
+                >
                   {m.text}
                 </div>
               </div>
@@ -524,13 +650,20 @@ export function Portfolio() {
           </div>
           <div className="p-2 border-t border-border flex gap-1 flex-wrap">
             {["Projects?", "Skills?", "Awards?"].map((q) => (
-              <button key={q} onClick={() => ask(q)} className="font-pixel text-[9px] px-2 py-1 pixel-border bg-muted hover:bg-primary hover:text-primary-foreground">
+              <button
+                key={q}
+                onClick={() => ask(q)}
+                className="font-pixel text-[9px] px-2 py-1 pixel-border bg-muted hover:bg-primary hover:text-primary-foreground"
+              >
                 {q}
               </button>
             ))}
           </div>
           <form
-            onSubmit={(e) => { e.preventDefault(); if (input.trim()) ask(input); }}
+            onSubmit={(e) => {
+              e.preventDefault();
+              if (input.trim()) ask(input);
+            }}
             className="p-2 border-t border-border flex gap-2"
           >
             <input
